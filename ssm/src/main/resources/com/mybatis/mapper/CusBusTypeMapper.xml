@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.CusBusTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.CusBusType" >
+    <id column="btid" property="btid" jdbcType="INTEGER" />
+    <result column="btname" property="btname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    btid, btname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cusbus_type
+    where btid = #{btid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cusbus_type
+    where btid = #{btid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.bean.CusBusType" >
+    insert into cusbus_type (btid, btname)
+    values (#{btid,jdbcType=INTEGER}, #{btname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.CusBusType" >
+    insert into cusbus_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="btid != null" >
+        btid,
+      </if>
+      <if test="btname != null" >
+        btname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="btid != null" >
+        #{btid,jdbcType=INTEGER},
+      </if>
+      <if test="btname != null" >
+        #{btname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.CusBusType" >
+    update cusbus_type
+    <set >
+      <if test="btname != null" >
+        btname = #{btname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where btid = #{btid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.bean.CusBusType" >
+    update cusbus_type
+    set btname = #{btname,jdbcType=VARCHAR}
+    where btid = #{btid,jdbcType=INTEGER}
+  </update>
+  <select id="allBusType" resultType="com.icss.bean.CusBusType">
+  	SELECT btid, btname FROM cusbus_type
+  </select>
+</mapper>

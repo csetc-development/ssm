@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.SignedMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.Signed" >
+    <id column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="stime" property="stime" jdbcType="VARCHAR" />
+    <result column="sbusinesstype" property="sbusinesstype" jdbcType="VARCHAR" />
+    <result column="scustomername" property="scustomername" jdbcType="VARCHAR" />
+    <result column="scustomerschool" property="scustomerschool" jdbcType="VARCHAR" />
+    <result column="scustomercollege" property="scustomercollege" jdbcType="VARCHAR" />
+    <result column="scustomermajor" property="scustomermajor" jdbcType="VARCHAR" />
+    <result column="scustomercardid" property="scustomercardid" jdbcType="VARCHAR" />
+    <result column="scustomerbankcardid" property="scustomerbankcardid" jdbcType="VARCHAR" />
+    <result column="scustomergrade" property="scustomergrade" jdbcType="VARCHAR" />
+    <result column="speoplenum" property="speoplenum" jdbcType="INTEGER" />
+    <result column="studyfee" property="studyfee" jdbcType="REAL" />
+    <result column="spacefee" property="spacefee" jdbcType="REAL" />
+    <result column="backfee" property="backfee" jdbcType="REAL" />
+    <result column="depositfee" property="depositfee" jdbcType="REAL" />
+    <result column="sale" property="sale" jdbcType="VARCHAR" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    <result column="sarea" property="sarea" jdbcType="VARCHAR" />
+    <result column="sremark" property="sremark" jdbcType="VARCHAR" />
+    <result column="stateid" property="stateid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="SignedMap" type="com.icss.bean.Signed" >
+    <id column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="stime" property="stime" jdbcType="VARCHAR" />
+    <result column="sbusinesstype" property="sbusinesstype" jdbcType="VARCHAR" />
+    <result column="scustomername" property="scustomername" jdbcType="VARCHAR" />
+    <result column="scustomerschool" property="scustomerschool" jdbcType="VARCHAR" />
+    <result column="scustomercollege" property="scustomercollege" jdbcType="VARCHAR" />
+    <result column="scustomermajor" property="scustomermajor" jdbcType="VARCHAR" />
+    <result column="scustomercardid" property="scustomercardid" jdbcType="VARCHAR" />
+    <result column="scustomerbankcardid" property="scustomerbankcardid" jdbcType="VARCHAR" />
+    <result column="scustomergrade" property="scustomergrade" jdbcType="VARCHAR" />
+    <result column="speoplenum" property="speoplenum" jdbcType="INTEGER" />
+    <result column="studyfee" property="studyfee" jdbcType="REAL" />
+    <result column="spacefee" property="spacefee" jdbcType="REAL" />
+    <result column="backfee" property="backfee" jdbcType="REAL" />
+    <result column="depositfee" property="depositfee" jdbcType="REAL" />
+    <result column="sale" property="sale" jdbcType="VARCHAR" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    <result column="sarea" property="sarea" jdbcType="VARCHAR" />
+    <result column="sremark" property="sremark" jdbcType="VARCHAR" />
+    <result column="stateid" property="stateid" jdbcType="INTEGER" />
+    <result column="condition" property="condition" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, stime, sbusinesstype, scustomername, scustomerschool, scustomercollege, scustomermajor, 
+    scustomercardid, scustomerbankcardid, scustomergrade, speoplenum, studyfee, spacefee, 
+    backfee, depositfee, sale, dept, sarea, sremark, stateid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from signed
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from signed
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.bean.Signed" >
+    insert into signed (sid, stime, sbusinesstype, 
+      scustomername, scustomerschool, scustomercollege, 
+      scustomermajor, scustomercardid, scustomerbankcardid, 
+      scustomergrade, speoplenum, studyfee, 
+      spacefee, backfee, depositfee, 
+      sale, dept, sarea, 
+      sremark, stateid)
+    values (#{sid,jdbcType=INTEGER}, #{stime,jdbcType=VARCHAR}, #{sbusinesstype,jdbcType=VARCHAR}, 
+      #{scustomername,jdbcType=VARCHAR}, #{scustomerschool,jdbcType=VARCHAR}, #{scustomercollege,jdbcType=VARCHAR}, 
+      #{scustomermajor,jdbcType=VARCHAR}, #{scustomercardid,jdbcType=VARCHAR}, #{scustomerbankcardid,jdbcType=VARCHAR}, 
+      #{scustomergrade,jdbcType=VARCHAR}, #{speoplenum,jdbcType=INTEGER}, #{studyfee,jdbcType=REAL}, 
+      #{spacefee,jdbcType=REAL}, #{backfee,jdbcType=REAL}, #{depositfee,jdbcType=REAL}, 
+      #{sale,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{sarea,jdbcType=VARCHAR}, 
+      #{sremark,jdbcType=VARCHAR}, #{stateid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.Signed" >
+    insert into signed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="stime != null" >
+        stime,
+      </if>
+      <if test="sbusinesstype != null" >
+        sbusinesstype,
+      </if>
+      <if test="scustomername != null" >
+        scustomername,
+      </if>
+      <if test="scustomerschool != null" >
+        scustomerschool,
+      </if>
+      <if test="scustomercollege != null" >
+        scustomercollege,
+      </if>
+      <if test="scustomermajor != null" >
+        scustomermajor,
+      </if>
+      <if test="scustomercardid != null" >
+        scustomercardid,
+      </if>
+      <if test="scustomerbankcardid != null" >
+        scustomerbankcardid,
+      </if>
+      <if test="scustomergrade != null" >
+        scustomergrade,
+      </if>
+      <if test="speoplenum != null" >
+        speoplenum,
+      </if>
+      <if test="studyfee != null" >
+        studyfee,
+      </if>
+      <if test="spacefee != null" >
+        spacefee,
+      </if>
+      <if test="backfee != null" >
+        backfee,
+      </if>
+      <if test="depositfee != null" >
+        depositfee,
+      </if>
+      <if test="sale != null" >
+        sale,
+      </if>
+      <if test="dept != null" >
+        dept,
+      </if>
+      <if test="sarea != null" >
+        sarea,
+      </if>
+      <if test="sremark != null" >
+        sremark,
+      </if>
+      <if test="stateid != null" >
+        stateid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="stime != null" >
+        #{stime,jdbcType=VARCHAR},
+      </if>
+      <if test="sbusinesstype != null" >
+        #{sbusinesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomername != null" >
+        #{scustomername,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomerschool != null" >
+        #{scustomerschool,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomercollege != null" >
+        #{scustomercollege,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomermajor != null" >
+        #{scustomermajor,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomercardid != null" >
+        #{scustomercardid,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomerbankcardid != null" >
+        #{scustomerbankcardid,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomergrade != null" >
+        #{scustomergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="speoplenum != null" >
+        #{speoplenum,jdbcType=INTEGER},
+      </if>
+      <if test="studyfee != null" >
+        #{studyfee,jdbcType=REAL},
+      </if>
+      <if test="spacefee != null" >
+        #{spacefee,jdbcType=REAL},
+      </if>
+      <if test="backfee != null" >
+        #{backfee,jdbcType=REAL},
+      </if>
+      <if test="depositfee != null" >
+        #{depositfee,jdbcType=REAL},
+      </if>
+      <if test="sale != null" >
+        #{sale,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="sarea != null" >
+        #{sarea,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null" >
+        #{sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="stateid != null" >
+        #{stateid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.Signed" >
+    update signed
+    <set >
+      <if test="stime != null" >
+        stime = #{stime,jdbcType=VARCHAR},
+      </if>
+      <if test="sbusinesstype != null" >
+        sbusinesstype = #{sbusinesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomername != null" >
+        scustomername = #{scustomername,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomerschool != null" >
+        scustomerschool = #{scustomerschool,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomercollege != null" >
+        scustomercollege = #{scustomercollege,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomermajor != null" >
+        scustomermajor = #{scustomermajor,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomercardid != null" >
+        scustomercardid = #{scustomercardid,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomerbankcardid != null" >
+        scustomerbankcardid = #{scustomerbankcardid,jdbcType=VARCHAR},
+      </if>
+      <if test="scustomergrade != null" >
+        scustomergrade = #{scustomergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="speoplenum != null" >
+        speoplenum = #{speoplenum,jdbcType=INTEGER},
+      </if>
+      <if test="studyfee != null" >
+        studyfee = #{studyfee,jdbcType=REAL},
+      </if>
+      <if test="spacefee != null" >
+        spacefee = #{spacefee,jdbcType=REAL},
+      </if>
+      <if test="backfee != null" >
+        backfee = #{backfee,jdbcType=REAL},
+      </if>
+      <if test="depositfee != null" >
+        depositfee = #{depositfee,jdbcType=REAL},
+      </if>
+      <if test="sale != null" >
+        sale = #{sale,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="sarea != null" >
+        sarea = #{sarea,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null" >
+        sremark = #{sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="stateid != null" >
+        stateid = #{stateid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.bean.Signed" >
+    update signed
+    set stime = #{stime,jdbcType=VARCHAR},
+      sbusinesstype = #{sbusinesstype,jdbcType=VARCHAR},
+      scustomername = #{scustomername,jdbcType=VARCHAR},
+      scustomerschool = #{scustomerschool,jdbcType=VARCHAR},
+      scustomercollege = #{scustomercollege,jdbcType=VARCHAR},
+      scustomermajor = #{scustomermajor,jdbcType=VARCHAR},
+      scustomercardid = #{scustomercardid,jdbcType=VARCHAR},
+      scustomerbankcardid = #{scustomerbankcardid,jdbcType=VARCHAR},
+      scustomergrade = #{scustomergrade,jdbcType=VARCHAR},
+      speoplenum = #{speoplenum,jdbcType=INTEGER},
+      studyfee = #{studyfee,jdbcType=REAL},
+      spacefee = #{spacefee,jdbcType=REAL},
+      backfee = #{backfee,jdbcType=REAL},
+      depositfee = #{depositfee,jdbcType=REAL},
+      sale = #{sale,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      sarea = #{sarea,jdbcType=VARCHAR},
+      sremark = #{sremark,jdbcType=VARCHAR},
+      stateid = #{stateid,jdbcType=INTEGER}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查询自己的签单信息及签单状态（默认按日期降序排）  -->
+  <select id="signedinfoIsMine" resultMap="SignedMap" parameterType="java.lang.String">
+  <bind name="sale" value="_parameter"/>
+  	 SELECT sid, stime, sbusinesstype, scustomername, scustomerschool, scustomercollege, scustomermajor, 
+	    scustomercardid, scustomerbankcardid, scustomergrade, speoplenum, studyfee, spacefee, 
+	    backfee, depositfee, sale, dept, sarea, sremark,st.stateid,st.`condition`
+	 FROM signed si
+	 INNER JOIN `status` st ON si.stateid = st.stateid
+	 WHERE sale=#{sale,jdbcType=VARCHAR}
+	 ORDER BY stime DESC
+  </select>
+  
+  <!-- 查询所有待收款,待返款,待退款的签单  -->
+  <select id="pending" resultMap="SignedMap" parameterType="java.lang.Integer">
+  	SELECT si.sid, stime, sbusinesstype, scustomername, scustomerschool, scustomercollege, scustomermajor, 
+	    scustomercardid, scustomerbankcardid, scustomergrade, speoplenum, studyfee, spacefee, 
+	    backfee, depositfee, sale, dept, sarea, sremark,si.stateid, allmoney `condition`
+	 FROM signed si
+	 LEFT JOIN (SELECT sid,sum(amount) allmoney FROM iaer GROUP BY sid) s ON s.sid = si.sid
+	 WHERE si.stateid=#{stateid,jdbcType=INTEGER}
+  </select>
+
+
+  
+  
+</mapper>

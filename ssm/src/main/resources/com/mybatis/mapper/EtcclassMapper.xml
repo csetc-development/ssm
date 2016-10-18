@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.EtcclassMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.Etcclass" >
+    <id column="etcid" property="etcid" jdbcType="INTEGER" />
+    <result column="etcname" property="etcname" jdbcType="VARCHAR" />
+    <result column="etcnum" property="etcnum" jdbcType="INTEGER" />
+    <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="startdate" property="startdate" jdbcType="VARCHAR" />
+    <result column="enddate" property="enddate" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    etcid, etcname, etcnum, eid, startdate, enddate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from etcclass
+    where etcid = #{etcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from etcclass
+    where etcid = #{etcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.bean.Etcclass" >
+    insert into etcclass (etcid, etcname, etcnum, 
+      eid, startdate, enddate
+      )
+    values (#{etcid,jdbcType=INTEGER}, #{etcname,jdbcType=VARCHAR}, #{etcnum,jdbcType=INTEGER}, 
+      #{eid,jdbcType=INTEGER}, #{startdate,jdbcType=VARCHAR}, #{enddate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.Etcclass" >
+    insert into etcclass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="etcid != null" >
+        etcid,
+      </if>
+      <if test="etcname != null" >
+        etcname,
+      </if>
+      <if test="etcnum != null" >
+        etcnum,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="startdate != null" >
+        startdate,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="etcid != null" >
+        #{etcid,jdbcType=INTEGER},
+      </if>
+      <if test="etcname != null" >
+        #{etcname,jdbcType=VARCHAR},
+      </if>
+      <if test="etcnum != null" >
+        #{etcnum,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.Etcclass" >
+    update etcclass
+    <set >
+      <if test="etcname != null" >
+        etcname = #{etcname,jdbcType=VARCHAR},
+      </if>
+      <if test="etcnum != null" >
+        etcnum = #{etcnum,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="startdate != null" >
+        startdate = #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where etcid = #{etcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.bean.Etcclass" >
+    update etcclass
+    set etcname = #{etcname,jdbcType=VARCHAR},
+      etcnum = #{etcnum,jdbcType=INTEGER},
+      eid = #{eid,jdbcType=INTEGER},
+      startdate = #{startdate,jdbcType=VARCHAR},
+      enddate = #{enddate,jdbcType=VARCHAR}
+    where etcid = #{etcid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查询所有班级信息 -->
+  <select id="allclassinfo" resultMap="BaseResultMap">
+  	SELECT e.etcid, e.eid, etcname, etcnum, startdate,enddate, IFNULL(count,0) count, ename FROM etcclass e  LEFT  JOIN (
+		SELECT s.etcid, COUNT(s.crid)  count FROM students s GROUP BY s.etcid ) ss ON  ss.etcid = e.etcid
+		INNER JOIN empinfo m ON e.eid = m.eid
+  </select>
+  
+  <!-- 查询所有还没有满员的班级信息 -->
+  <select id="allowaddstuclass" resultMap="BaseResultMap">
+  	SELECT e.etcid, e.eid, etcname, etcnum, startdate,enddate, IFNULL(count,0) count, ename FROM etcclass e  LEFT  JOIN (
+		SELECT s.etcid, COUNT(s.crid)  count FROM students s GROUP BY s.etcid ) ss ON  ss.etcid = e.etcid
+		INNER JOIN empinfo m ON e.eid = m.eid where etcnum > count OR  count is null
+  </select>
+</mapper>

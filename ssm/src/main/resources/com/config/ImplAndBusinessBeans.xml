@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.1.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-4.1.xsd ">
+			
+		<!-- <bean id="add_persMapperImpl" class="com.icss.impl.Add_persMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="add_persBusiness" class="com.icss.business.Add_persBusiness">
+			<property name="persDAO" ref="add_persMapperImpl"></property>
+		</bean>
+		
+		<bean id="user_infoMapperImpl" class="com.icss.impl.User_infoMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="user_infoBusiness" class="com.icss.business.User_infoBusiness">
+			<property name="user_infoDAO" ref="user_infoMapperImpl"></property>
+		</bean>-->
+		
+		<bean id="payCodeMapperImpl" class="com.icss.impl.PayCodeMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="paycodeBusiness" class="com.icss.business.PayCodeBusiness">
+			<property name="paycodeDAO" ref="payCodeMapperImpl"></property>
+		</bean> 
+		
+		<bean id="ViewEmpallinfoMapperImpl" class="com.icss.impl.ViewEmpallinfoMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="viewEmpallinfoBusiness" class="com.icss.business.ViewEmpallinfoBusiness">
+			<property name="empallinfoDAO" ref="ViewEmpallinfoMapperImpl"></property>
+		</bean>
+		
+		<bean id="customerinfoMapperImpl" class="com.icss.impl.CustomerinfoMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		
+		<bean id="customerBusiness" class="com.icss.business.CustomerBusiness">
+			<property name="customerDao" ref="customerinfoMapperImpl"></property>
+		</bean>
+		
+		<bean id="cusAreaMapperImpl" class="com.icss.impl.CusAreaMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		
+		<bean id="cusAreaBusiness" class="com.icss.business.CusAreaBusiness">
+			<property name="cusareaDao" ref="cusAreaMapperImpl"></property>
+		</bean>
+		
+		<bean id="cusBusTypeMapperImpl" class="com.icss.impl.CusBusTypeMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		
+		<bean id="cusBusTypeBusiness" class="com.icss.business.CusBusTypeBusiness">
+			<property name="cusbustypeDao" ref="cusBusTypeMapperImpl"></property>
+		</bean>
+		
+		<bean id="departmentMapperImpl" class="com.icss.impl.DepartmentMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="departmentBusiness" class="com.icss.business.DepartmentBusiness">
+			<property name="departmentDAO" ref="departmentMapperImpl"></property>
+		</bean>
+		
+		<bean id="empinfoMapperImpl" class="com.icss.impl.EmpinfoMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="empinfoBusiness" class="com.icss.business.EmpinfoBusiness">
+			<property name="empinfoDao" ref="empinfoMapperImpl"></property>
+		</bean>
+		
+		<bean id="empPowerMapperImpl" class="com.icss.impl.EmpPowerMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="empPowerBusiness" class="com.icss.business.EmpPowerBusiness">
+			<property name="emppowerDao" ref="empPowerMapperImpl"></property>
+		</bean>
+		
+		<bean id="logininfoMapperImpl" class="com.icss.impl.LogininfoMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="logininfoBusiness" class="com.icss.business.LogininfoBusiness">
+			<property name="logininfoDao" ref="logininfoMapperImpl"></property>
+		</bean>
+		
+		<bean id="viewSigpayinfoMapperImpl" class="com.icss.impl.ViewSigpayinfoMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="viewSigpayinfoBusiness" class="com.icss.business.ViewSigpayinfoBusiness">
+			<property name="viewsigpsyinfoDao" ref="viewSigpayinfoMapperImpl"></property>
+		</bean>
+		
+		<bean id="payTypeMapperImpl" class="com.icss.impl.PayTypeMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="payTypeBusiness" class="com.icss.business.PayTypeBusiness">
+			<property name="paytypeDao" ref="payTypeMapperImpl"></property>
+		</bean>
+		
+		<bean id="payRecordMapperImpl" class="com.icss.impl.PayRecordMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="payRecordBusiness" class="com.icss.business.PayRecordBusiness">
+			<property name="payrecordDao" ref="payRecordMapperImpl"></property>
+		</bean>
+		
+		<bean id="studentsMapperImpl" class="com.icss.impl.StudentsMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="studentsBusiness" class="com.icss.business.StudentsBusiness">
+			<property name="studentsDao" ref="studentsMapperImpl"></property>
+		</bean>
+		
+		<bean id="etcclassMapperImpl" class="com.icss.impl.EtcclassMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="etcclassBusiness" class="com.icss.business.EtccclassBusiness">
+			<property name="etcclassDao" ref="etcclassMapperImpl"></property>
+		</bean>
+		
+		<bean id="userMapperImpl" class="com.icss.impl.UserMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="userBusiness" class="com.icss.business.UserBusiness">
+			<property name="userDao" ref="userMapperImpl"></property>
+		</bean>
+		<bean id="signedMapperImpl" class="com.icss.impl.SignedMapperImpl">
+			<property name="session" ref="sqlSession"></property>
+		</bean>
+		<bean id="signedBusiness" class="com.icss.business.SignedBusiness">
+			<property name="signedDao" ref="signedMapperImpl"></property>
+		</bean>
+		
+		
+</beans>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.ViewEmpallinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.ViewEmpallinfo" >
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="purl" property="purl" jdbcType="VARCHAR" />
+    <result column="did" property="did" jdbcType="INTEGER" />
+    <result column="d_name" property="dName" jdbcType="VARCHAR" />
+    <result column="d_address" property="dAddress" jdbcType="VARCHAR" />
+    <result column="d_remark" property="dRemark" jdbcType="VARCHAR" />
+    <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
+    <result column="esex" property="esex" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="ebrithday" property="ebrithday" jdbcType="VARCHAR" />
+    <result column="entrytime" property="entrytime" jdbcType="VARCHAR" />
+    <result column="departuretime" property="departuretime" jdbcType="VARCHAR" />
+    <result column="ecard" property="ecard" jdbcType="VARCHAR" />
+    <result column="etel" property="etel" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="ecardid" property="ecardid" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="ejob" property="ejob" jdbcType="VARCHAR" />
+    <result column="emariage" property="emariage" jdbcType="VARCHAR" />
+    <result column="eaddress" property="eaddress" jdbcType="VARCHAR" />
+    <result column="superiorid" property="superiorid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    username, password, eid, ename, esex, ebrithday, entrytime, departuretime, ecard, ecardid, education, 
+    ejob, email, emariage, etel,eaddress,did,d_name,d_address,d_remark,pid,purl
+  </sql>
+  <insert id="insert" parameterType="com.icss.bean.ViewEmpallinfo" >
+    insert into view_empallinfo (username, password, eid, 
+      ename, esex, ebrithday, 
+      entrytime, departuretime, ecard, 
+      ecardid, education, ejob, 
+      email, emariage, etel, 
+      eaddress, did, d_name, 
+      d_address, d_remark, pid, 
+      purl)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{eid,jdbcType=INTEGER}, 
+      #{ename,jdbcType=VARCHAR}, #{esex,jdbcType=VARCHAR}, #{ebrithday,jdbcType=VARCHAR}, 
+      #{entrytime,jdbcType=VARCHAR}, #{departuretime,jdbcType=VARCHAR}, #{ecard,jdbcType=VARCHAR}, 
+      #{ecardid,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{ejob,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{emariage,jdbcType=VARCHAR}, #{etel,jdbcType=VARCHAR}, 
+      #{eaddress,jdbcType=VARCHAR}, #{did,jdbcType=INTEGER}, #{d_name,jdbcType=VARCHAR}, 
+      #{d_address,jdbcType=VARCHAR}, #{d_remark,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
+      #{purl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.ViewEmpallinfo" >
+    insert into view_empallinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+      <if test="esex != null" >
+        esex,
+      </if>
+      <if test="ebrithday != null" >
+        ebrithday,
+      </if>
+      <if test="entrytime != null" >
+        entrytime,
+      </if>
+      <if test="departuretime != null" >
+        departuretime,
+      </if>
+      <if test="ecard != null" >
+        ecard,
+      </if>
+      <if test="ecardid != null" >
+        ecardid,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="ejob != null" >
+        ejob,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="emariage != null" >
+        emariage,
+      </if>
+      <if test="etel != null" >
+        etel,
+      </if>
+      <if test="eaddress != null" >
+        eaddress,
+      </if>
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="d_name != null" >
+        d_name,
+      </if>
+      <if test="d_address != null" >
+        d_address,
+      </if>
+      <if test="d_remark != null" >
+        d_remark,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="purl != null" >
+        purl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        #{esex,jdbcType=VARCHAR},
+      </if>
+      <if test="ebrithday != null" >
+        #{ebrithday,jdbcType=VARCHAR},
+      </if>
+      <if test="entrytime != null" >
+        #{entrytime,jdbcType=VARCHAR},
+      </if>
+      <if test="departuretime != null" >
+        #{departuretime,jdbcType=VARCHAR},
+      </if>
+      <if test="ecard != null" >
+        #{ecard,jdbcType=VARCHAR},
+      </if>
+      <if test="ecardid != null" >
+        #{ecardid,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="ejob != null" >
+        #{ejob,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emariage != null" >
+        #{emariage,jdbcType=VARCHAR},
+      </if>
+      <if test="etel != null" >
+        #{etel,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null" >
+        #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="d_name != null" >
+        #{d_name,jdbcType=VARCHAR},
+      </if>
+      <if test="d_address != null" >
+        #{d_address,jdbcType=VARCHAR},
+      </if>
+      <if test="d_remark != null" >
+        #{d_remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="purl != null" >
+        #{purl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getoneinfo" parameterType="java.lang.Integer" resultType="com.icss.bean.ViewEmpallinfo">
+  	SELECT <include refid="Base_Column_List" /> FROM view_empallinfo WHERE eid = #{eid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="logincheck" parameterType="java.lang.String" resultType="com.icss.bean.ViewEmpallinfo"> 
+  	SELECT 
+  	 <include refid="Base_Column_List" />
+  	FROM view_empallinfo WHERE username=#{_parameter,jdbcType=VARCHAR}
+  </select>
+  <select id="getPwd" parameterType="java.lang.Integer" resultType="java.lang.String">
+  	SELECT `password` FROM view_empallinfo WHERE eid= #{eid,jdbcType=INTEGER}
+  </select>
+  
+  <update id="updatePwdbyId" parameterType="com.icss.bean.ViewEmpallinfo">
+  	UPDATE view_empallinfo SET `password` = #{password,jdbcType=VARCHAR} WHERE eid = #{eid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateoneinfo" parameterType="com.icss.bean.ViewEmpallinfo">
+  	UPDATE view_empallinfo 
+  	SET emariage = #{emariage,jdbcType=VARCHAR},
+  		ecardid = #{ecardid,jdbcType=VARCHAR},
+  		ecard = #{ecard,jdbcType=VARCHAR},
+  		etel = #{etel,jdbcType=VARCHAR},
+  		eaddress = #{eaddress,jdbcType=VARCHAR},
+  		email = #{email,jdbcType=VARCHAR},
+  		education = #{education,jdbcType=VARCHAR}
+  	WHERE eid = #{eid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="empinfo" resultMap="BaseResultMap">
+ SELECT e.did, e.eid,e.ename,e.entrytime,e.ejob,e.etel,e.email ,e.remark d_remark,d.d_name d_name from (
+	SELECT e1.did, e1.eid,e1.ename,e1.entrytime,e1.ejob,e1.etel,e1.email ,e2.ename remark FROM empinfo e1 LEFT JOIN empinfo e2 ON e1.superiorid = e2.eid) e INNER JOIN department d on d.did =  e.did
+  </select>
+  
+  <select id="selectByname" resultMap="BaseResultMap" parameterType="java.lang.String">
+   <bind name="date" value="'%' + _parameter + '%'" />
+  SELECT e.did, e.eid,e.ename,e.entrytime,e.ejob,e.etel,e.email ,e.remark d_remark,d.d_name d_name from (
+	SELECT e1.did, e1.eid,e1.ename,e1.entrytime,e1.ejob,e1.etel,e1.email ,e2.ename remark FROM empinfo e1 LEFT JOIN empinfo e2 ON e1.superiorid = e2.eid WHERE e1.ename LIKE #{date,jdbcType=VARCHAR}) e INNER JOIN department d on d.did =  e.did
+  </select>
+</mapper>

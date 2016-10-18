@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.EmpinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.Empinfo" >
+    <id column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
+    <result column="esex" property="esex" jdbcType="VARCHAR" />
+    <result column="did" property="did" jdbcType="INTEGER" />
+    <result column="ebrithday" property="ebrithday" jdbcType="VARCHAR" />
+    <result column="entrytime" property="entrytime" jdbcType="VARCHAR" />
+    <result column="departuretime" property="departuretime" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="ecard" property="ecard" jdbcType="VARCHAR" />
+    <result column="etel" property="etel" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="ecardid" property="ecardid" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="ejob" property="ejob" jdbcType="VARCHAR" />
+    <result column="emariage" property="emariage" jdbcType="VARCHAR" />
+    <result column="eaddress" property="eaddress" jdbcType="VARCHAR" />
+    <result column="superiorid" property="superiorid" jdbcType="INTEGER" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    eid, ename, esex, did, ebrithday, entrytime, departuretime, pid, ecard, etel, email, 
+    ecardid, education, ejob, emariage, eaddress,superiorid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from empinfo
+    where eid = #{eid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from empinfo
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.bean.Empinfo" >
+    insert into empinfo (eid, ename, esex, 
+      did, ebrithday, entrytime, 
+      departuretime, pid, ecard, 
+      etel, email, ecardid, 
+      education, ejob, emariage, 
+      eaddress,superiorid)
+    values (#{eid,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{esex,jdbcType=VARCHAR}, 
+      #{did,jdbcType=INTEGER}, #{ebrithday,jdbcType=VARCHAR}, #{entrytime,jdbcType=VARCHAR}, 
+      #{departuretime,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{ecard,jdbcType=VARCHAR}, 
+      #{etel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{ecardid,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{ejob,jdbcType=VARCHAR}, #{emariage,jdbcType=VARCHAR}, 
+      #{eaddress,jdbcType=VARCHAR}, #{superiorid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.Empinfo"  useGeneratedKeys="true"  keyProperty="eid" >
+    insert into empinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+      <if test="esex != null" >
+        esex,
+      </if>
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="ebrithday != null" >
+        ebrithday,
+      </if>
+      <if test="entrytime != null" >
+        entrytime,
+      </if>
+      <if test="departuretime != null" >
+        departuretime,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="ecard != null" >
+        ecard,
+      </if>
+      <if test="etel != null" >
+        etel,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="ecardid != null" >
+        ecardid,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="ejob != null" >
+        ejob,
+      </if>
+      <if test="emariage != null" >
+        emariage,
+      </if>
+      <if test="eaddress != null" >
+        eaddress,
+      </if>
+      <if test="superiorid != null" >
+        superiorid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        #{esex,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="ebrithday != null" >
+        #{ebrithday,jdbcType=VARCHAR},
+      </if>
+      <if test="entrytime != null" >
+        #{entrytime,jdbcType=VARCHAR},
+      </if>
+      <if test="departuretime != null" >
+        #{departuretime,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="ecard != null" >
+        #{ecard,jdbcType=VARCHAR},
+      </if>
+      <if test="etel != null" >
+        #{etel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ecardid != null" >
+        #{ecardid,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="ejob != null" >
+        #{ejob,jdbcType=VARCHAR},
+      </if>
+      <if test="emariage != null" >
+        #{emariage,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null" >
+        #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorid != null" >
+        #{superiorid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.Empinfo" >
+    update empinfo
+    <set >
+      <if test="ename != null" >
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        esex = #{esex,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="ebrithday != null" >
+        ebrithday = #{ebrithday,jdbcType=VARCHAR},
+      </if>
+      <if test="entrytime != null" >
+        entrytime = #{entrytime,jdbcType=VARCHAR},
+      </if>
+      <if test="departuretime != null" >
+        departuretime = #{departuretime,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="ecard != null" >
+        ecard = #{ecard,jdbcType=VARCHAR},
+      </if>
+      <if test="etel != null" >
+        etel = #{etel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="ecardid != null" >
+        ecardid = #{ecardid,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="ejob != null" >
+        ejob = #{ejob,jdbcType=VARCHAR},
+      </if>
+      <if test="emariage != null" >
+        emariage = #{emariage,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null" >
+        eaddress = #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="superiorid != null" >
+        superiorid = #{superiorid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.bean.Empinfo" >
+    update empinfo
+    set ename = #{ename,jdbcType=VARCHAR},
+      esex = #{esex,jdbcType=VARCHAR},
+      did = #{did,jdbcType=INTEGER},
+      ebrithday = #{ebrithday,jdbcType=VARCHAR},
+      entrytime = #{entrytime,jdbcType=VARCHAR},
+      departuretime = #{departuretime,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER},
+      ecard = #{ecard,jdbcType=VARCHAR},
+      etel = #{etel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      ecardid = #{ecardid,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      ejob = #{ejob,jdbcType=VARCHAR},
+      emariage = #{emariage,jdbcType=VARCHAR},
+      eaddress = #{eaddress,jdbcType=VARCHAR},
+      superiorid = #{superiorid,jdbcType=INTEGER}
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <select id="selectsuper" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	SELECT 
+	<include refid="Base_Column_List" />
+	 FROM empinfo WHERE did= #{did,jdbcType=INTEGER}
+  </select>
+  
+<!--   <select id="selectteacher" resultMap="BaseResultMap">
+  
+  </select> -->
+   <!-- =======查找全部和按pid查找=== cq========= --> <!-- 分页查询 -->
+  <select id="findAll" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from empinfo
+ </select>  
+
+</mapper>

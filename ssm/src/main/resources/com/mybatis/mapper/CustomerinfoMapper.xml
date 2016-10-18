@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.CustomerinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.Customerinfo" >
+    <id column="crid" property="crid" jdbcType="INTEGER" />
+    <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="crname" property="crname" jdbcType="VARCHAR" />
+    <result column="crsex" property="crsex" jdbcType="VARCHAR" />
+    <result column="crschool" property="crschool" jdbcType="VARCHAR" />
+    <result column="crmajor" property="crmajor" jdbcType="VARCHAR" />
+    <result column="crgrade" property="crgrade" jdbcType="VARCHAR" />
+    <result column="crage" property="crage" jdbcType="INTEGER" />
+    <result column="crtel" property="crtel" jdbcType="VARCHAR" />
+    <result column="cronline" property="cronline" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap type="com.icss.bean.CustomerStauts" id="customerStatusMap">
+  	<result column="crid" property="crid" jdbcType="INTEGER"/>
+  	<result column="eid" property="eid" jdbcType="INTEGER"/>
+  	<result column="crname" property="crname"  jdbcType="VARCHAR"/>
+  	<result column="crtel" property="crtel" jdbcType="VARCHAR"/>
+  	<result column="cronline" property="cronline"  jdbcType="VARCHAR"/>
+  	<result column="cid" property="cid" jdbcType="INTEGER"/> 
+  </resultMap>
+  
+  <resultMap id="allcustomerMap" type="com.icss.bean.ViewAllcustomerinfo" >
+    <result column="cdid" property="cdid" jdbcType="INTEGER" />
+    <result column="crid" property="crid" jdbcType="INTEGER" />
+    <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="crname" property="crname" jdbcType="VARCHAR" />
+    <result column="crsex" property="crsex" jdbcType="VARCHAR" />
+    <result column="crschool" property="crschool" jdbcType="VARCHAR" />
+    <result column="crmajor" property="crmajor" jdbcType="VARCHAR" />
+    <result column="crgrade" property="crgrade" jdbcType="VARCHAR" />
+    <result column="crage" property="crage" jdbcType="INTEGER" />
+    <result column="crtel" property="crtel" jdbcType="VARCHAR" />
+    <result column="cronline" property="cronline" jdbcType="INTEGER" />
+    <result column="cdbrithday" property="cdbrithday" jdbcType="VARCHAR" />
+    <result column="cdmariage" property="cdmariage" jdbcType="VARCHAR" />
+    <result column="cdhometown" property="cdhometown" jdbcType="VARCHAR" />
+    <result column="cdnation" property="cdnation" jdbcType="VARCHAR" />
+    <result column="cdlandscape" property="cdlandscape" jdbcType="VARCHAR" />
+    <result column="cdchildren" property="cdchildren" jdbcType="VARCHAR" />
+    <result column="cdeducation" property="cdeducation" jdbcType="VARCHAR" />
+    <result column="cdgraduationtime" property="cdgraduationtime" jdbcType="VARCHAR" />
+    <result column="cdcaidid" property="cdcaidid" jdbcType="VARCHAR" />
+    <result column="cdaccountaddress" property="cdaccountaddress" jdbcType="VARCHAR" />
+    <result column="cdpresentaddress" property="cdpresentaddress" jdbcType="VARCHAR" />
+    <result column="acquaintance" property="acquaintance" jdbcType="VARCHAR" />
+    <result column="cdinformationsources" property="cdinformationsources" jdbcType="VARCHAR" />
+    <result column="csname" property="csname" jdbcType="VARCHAR" />
+    <result column="cdwork" property="cdwork" jdbcType="VARCHAR" />
+    <result column="cdsalary" property="cdsalary" jdbcType="VARCHAR" />
+    <result column="cddate" property="cddate" jdbcType="VARCHAR" />
+    <result column="cdtimeline" property="cdtimeline" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="DetailedMap" type="com.icss.bean.Detailed" >
+    <id column="cdid" property="cdid" jdbcType="INTEGER" />
+    <result column="cdbrithday" property="cdbrithday" jdbcType="VARCHAR" />
+    <result column="cdmariage" property="cdmariage" jdbcType="VARCHAR" />
+    <result column="cdhometown" property="cdhometown" jdbcType="VARCHAR" />
+    <result column="cdnation" property="cdnation" jdbcType="VARCHAR" />
+    <result column="cdlandscape" property="cdlandscape" jdbcType="VARCHAR" />
+    <result column="cdchildren" property="cdchildren" jdbcType="VARCHAR" />
+    <result column="cdeducation" property="cdeducation" jdbcType="VARCHAR" />
+    <result column="cdgraduationtime" property="cdgraduationtime" jdbcType="VARCHAR" />
+    <result column="cdcaidid" property="cdcaidid" jdbcType="VARCHAR" />
+    <result column="cdaccountaddress" property="cdaccountaddress" jdbcType="VARCHAR" />
+    <result column="cdpresentaddress" property="cdpresentaddress" jdbcType="VARCHAR" />
+    <result column="acquaintance" property="acquaintance" jdbcType="VARCHAR" />
+    <result column="cdinformationsources" property="cdinformationsources" jdbcType="VARCHAR" />
+    <result column="cdwork" property="cdwork" jdbcType="VARCHAR" />
+    <result column="cdsalary" property="cdsalary" jdbcType="VARCHAR" />
+    <result column="cddate" property="cddate" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="workexperienceMap" type="com.icss.bean.WorkExperience" >
+    <id column="weid" property="weid" jdbcType="INTEGER" />
+    <result column="westartime" property="westartime" jdbcType="VARCHAR" />
+    <result column="wendtime" property="wendtime" jdbcType="VARCHAR" />
+    <result column="wecompanyname" property="wecompanyname" jdbcType="VARCHAR" />
+    <result column="wesalary" property="wesalary" jdbcType="VARCHAR" />
+    <result column="wewitness" property="wewitness" jdbcType="VARCHAR" />
+    <result column="wetel" property="wetel" jdbcType="VARCHAR" />
+    <result column="weleavresons" property="weleavresons" jdbcType="VARCHAR" />
+    <result column="weindustry" property="weindustry" jdbcType="VARCHAR" />
+    <result column="wedepartment" property="wedepartment" jdbcType="VARCHAR" />
+    <result column="wepost" property="wepost" jdbcType="VARCHAR" />
+    <result column="weobject" property="weobject" jdbcType="VARCHAR" />
+    <result column="wepersonumber" property="wepersonumber" jdbcType="VARCHAR" />
+    <result column="weworkcontent" property="weworkcontent" jdbcType="VARCHAR" />
+    <result column="crid" property="crid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="SocialrelationsMap" type="com.icss.bean.Socialrelations" >
+    <id column="srid" property="srid" jdbcType="INTEGER" />
+    <result column="srname" property="srname" jdbcType="VARCHAR" />
+    <result column="srelations" property="srelations" jdbcType="VARCHAR" />
+    <result column="srworkcompany" property="srworkcompany" jdbcType="VARCHAR" />
+    <result column="srpost" property="srpost" jdbcType="VARCHAR" />
+    <result column="srtel" property="srtel" jdbcType="VARCHAR" />
+    <result column="crid" property="crid" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="PaytypeMap" type="com.icss.bean.PayType" >
+    <id column="ptid" property="ptid" jdbcType="INTEGER" />
+    <result column="ptname" property="ptname" jdbcType="VARCHAR" />
+    <result column="pmoney" property="pmoney" jdbcType="REAL" />
+  </resultMap>
+  
+  <resultMap id="StudayMap" type="com.icss.bean.Studydirection" >
+    <id column="syid" property="syid" jdbcType="INTEGER" />
+    <result column="syname" property="syname" jdbcType="VARCHAR" />
+    <result column="studytime" property="studytime" jdbcType="REAL" />
+    <result column="stuition" property="stuition" jdbcType="REAL" />
+  </resultMap>
+  
+  <resultMap id="SpaceMap" type="com.icss.bean.Space" >
+    <id column="spid" property="spid" jdbcType="INTEGER" />
+    <result column="belongid" property="belongid" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="REAL" /><result column="spname" property="spname" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    crid, eid, crname, crsex, crschool, crmajor, crgrade, crage, crtel, cronline
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customerinfo
+    where crid = #{crid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customerinfo
+    where crid = #{crid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.bean.Customerinfo" >
+    insert into customerinfo (crid, eid, crname, 
+      crsex, crschool, crmajor, 
+      crgrade, crage, crtel, 
+      cronline)
+    values (#{crid,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{crname,jdbcType=VARCHAR}, 
+      #{crsex,jdbcType=VARCHAR}, #{crschool,jdbcType=VARCHAR}, #{crmajor,jdbcType=VARCHAR}, 
+      #{crgrade,jdbcType=VARCHAR}, #{crage,jdbcType=INTEGER}, #{crtel,jdbcType=VARCHAR}, 
+      #{cronline,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.Customerinfo" useGeneratedKeys="true"  keyProperty="crid">
+    insert into customerinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="crid != null" >
+        crid,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="crname != null" >
+        crname,
+      </if>
+      <if test="crsex != null" >
+        crsex,
+      </if>
+      <if test="crschool != null" >
+        crschool,
+      </if>
+      <if test="crmajor != null" >
+        crmajor,
+      </if>
+      <if test="crgrade != null" >
+        crgrade,
+      </if>
+      <if test="crage != null" >
+        crage,
+      </if>
+      <if test="crtel != null" >
+        crtel,
+      </if>
+      <if test="cronline != null" >
+        cronline,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="crid != null" >
+        #{crid,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="crname != null" >
+        #{crname,jdbcType=VARCHAR},
+      </if>
+      <if test="crsex != null" >
+        #{crsex,jdbcType=VARCHAR},
+      </if>
+      <if test="crschool != null" >
+        #{crschool,jdbcType=VARCHAR},
+      </if>
+      <if test="crmajor != null" >
+        #{crmajor,jdbcType=VARCHAR},
+      </if>
+      <if test="crgrade != null" >
+        #{crgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="crage != null" >
+        #{crage,jdbcType=INTEGER},
+      </if>
+      <if test="crtel != null" >
+        #{crtel,jdbcType=VARCHAR},
+      </if>
+      <if test="cronline != null" >
+        #{cronline,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.Customerinfo" >
+    update customerinfo
+    <set >
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="crname != null" >
+        crname = #{crname,jdbcType=VARCHAR},
+      </if>
+      <if test="crsex != null" >
+        crsex = #{crsex,jdbcType=VARCHAR},
+      </if>
+      <if test="crschool != null" >
+        crschool = #{crschool,jdbcType=VARCHAR},
+      </if>
+      <if test="crmajor != null" >
+        crmajor = #{crmajor,jdbcType=VARCHAR},
+      </if>
+      <if test="crgrade != null" >
+        crgrade = #{crgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="crage != null" >
+        crage = #{crage,jdbcType=INTEGER},
+      </if>
+      <if test="crtel != null" >
+        crtel = #{crtel,jdbcType=VARCHAR},
+      </if>
+      <if test="cronline != null" >
+        cronline = #{cronline,jdbcType=INTEGER},
+      </if>
+    </set>
+    where crid = #{crid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyDetailed" parameterType="com.icss.bean.Detailed" >
+    update detailed
+    <set >
+      <if test="cdbrithday != null" >
+        cdbrithday = #{cdbrithday,jdbcType=VARCHAR},
+      </if>
+      <if test="cdmariage != null" >
+        cdmariage = #{cdmariage,jdbcType=VARCHAR},
+      </if>
+      <if test="cdhometown != null" >
+        cdhometown = #{cdhometown,jdbcType=VARCHAR},
+      </if>
+      <if test="cdnation != null" >
+        cdnation = #{cdnation,jdbcType=VARCHAR},
+      </if>
+      <if test="cdlandscape != null" >
+        cdlandscape = #{cdlandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="cdchildren != null" >
+        cdchildren = #{cdchildren,jdbcType=VARCHAR},
+      </if>
+      <if test="cdeducation != null" >
+        cdeducation = #{cdeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="cdgraduationtime != null" >
+        cdgraduationtime = #{cdgraduationtime,jdbcType=VARCHAR},
+      </if>
+      <if test="cdcaidid != null" >
+        cdcaidid = #{cdcaidid,jdbcType=VARCHAR},
+      </if>
+      <if test="cdaccountaddress != null" >
+        cdaccountaddress = #{cdaccountaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cdpresentaddress != null" >
+        cdpresentaddress = #{cdpresentaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="acquaintance != null" >
+        acquaintance = #{acquaintance,jdbcType=VARCHAR},
+      </if>
+      <if test="cdinformationsources != null" >
+        cdinformationsources = #{cdinformationsources,jdbcType=VARCHAR},
+      </if>
+      <if test="cdwork != null" >
+        cdwork = #{cdwork,jdbcType=VARCHAR},
+      </if>
+      <if test="cdsalary != null" >
+        cdsalary = #{cdsalary,jdbcType=VARCHAR},
+      </if>
+      <if test="cddate != null" >
+        cddate = #{cddate,jdbcType=VARCHAR},
+      </if>
+      <if test="cdtimeline != null" >
+        cdtimeline = #{cdtimeline,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cdid = #{cdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.bean.Customerinfo" >
+    update customerinfo
+    set eid = #{eid,jdbcType=INTEGER},
+      crname = #{crname,jdbcType=VARCHAR},
+      crsex = #{crsex,jdbcType=VARCHAR},
+      crschool = #{crschool,jdbcType=VARCHAR},
+      crmajor = #{crmajor,jdbcType=VARCHAR},
+      crgrade = #{crgrade,jdbcType=VARCHAR},
+      crage = #{crage,jdbcType=INTEGER},
+      crtel = #{crtel,jdbcType=VARCHAR},
+      cronline = #{cronline,jdbcType=INTEGER}
+    where crid = #{crid,jdbcType=INTEGER}
+  </update>
+  <!-- 根据客户id查询学生姓名 -->
+  <select id="selectnamebyid" parameterType="java.lang.Integer" resultType="java.lang.String">
+  	SELECT crname FROM customerinfo WHERE crid = #{crid,jdbcType=INTEGER}  	
+  </select>
+  
+  <!-- 插入客户详细信息 -->
+   <insert id="insertDetailed" parameterType="com.icss.bean.Detailed" >
+    insert into detailed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cdid != null" >
+        cdid,
+      </if>
+      <if test="cdbrithday != null" >
+        cdbrithday,
+      </if>
+      <if test="cdmariage != null" >
+        cdmariage,
+      </if>
+      <if test="cdhometown != null" >
+        cdhometown,
+      </if>
+      <if test="cdnation != null" >
+        cdnation,
+      </if>
+      <if test="cdlandscape != null" >
+        cdlandscape,
+      </if>
+      <if test="cdchildren != null" >
+        cdchildren,
+      </if>
+      <if test="cdeducation != null" >
+        cdeducation,
+      </if>
+      <if test="cdgraduationtime != null" >
+        cdgraduationtime,
+      </if>
+      <if test="cdcaidid != null" >
+        cdcaidid,
+      </if>
+      <if test="cdaccountaddress != null" >
+        cdaccountaddress,
+      </if>
+      <if test="cdpresentaddress != null" >
+        cdpresentaddress,
+      </if>
+      <if test="acquaintance != null" >
+        acquaintance,
+      </if>
+      <if test="cdinformationsources != null" >
+        cdinformationsources,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cdid != null" >
+        #{cdid,jdbcType=INTEGER},
+      </if>
+      <if test="cdbrithday != null" >
+        #{cdbrithday,jdbcType=VARCHAR},
+      </if>
+      <if test="cdmariage != null" >
+        #{cdmariage,jdbcType=VARCHAR},
+      </if>
+      <if test="cdhometown != null" >
+        #{cdhometown,jdbcType=VARCHAR},
+      </if>
+      <if test="cdnation != null" >
+        #{cdnation,jdbcType=VARCHAR},
+      </if>
+      <if test="cdlandscape != null" >
+        #{cdlandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="cdchildren != null" >
+        #{cdchildren,jdbcType=VARCHAR},
+      </if>
+      <if test="cdeducation != null" >
+        #{cdeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="cdgraduationtime != null" >
+        #{cdgraduationtime,jdbcType=VARCHAR},
+      </if>
+      <if test="cdcaidid != null" >
+        #{cdcaidid,jdbcType=VARCHAR},
+      </if>
+      <if test="cdaccountaddress != null" >
+        #{cdaccountaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cdpresentaddress != null" >
+        #{cdpresentaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="acquaintance != null" >
+        #{acquaintance,jdbcType=INTEGER},
+      </if>
+      <if test="cdinformationsources != null" >
+        #{cdinformationsources,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 批量更新客户信息  -->
+  <update id="batchupdatecus" parameterType="java.util.List">
+  	UPDATE customerinfo SET cronline = -1 WHERE crid in 
+  	<foreach collection="list" item="item" index="index" open="(" separator="," close=")" >  
+        #{item}  
+    </foreach>  
+  </update>
+  
+  <!-- 查询所有客户信息  -->
+  <select id="allcusinfo" resultMap="allcustomerMap">
+	SELECT cdid, crid,eid,crname,crsex,crschool,crmajor,crgrade,crage,crtel,cronline,cdbrithday,
+	cdmariage,cdhometown,cdnation,cdlandscape,cdchildren,cdeducation,cdgraduationtime,
+	cdcaidid,cdaccountaddress,cdpresentaddress,acquaintance,cdinformationsources,csname,cdwork,cdsalary,cddate FROM view_allcustomerinfo where cronline>=0
+  </select>
+  <!-- 查看客户类型  -->
+  <select id="customertype" resultMap="allcustomerMap" parameterType="java.lang.Integer">
+  	SELECT cdid, crid,eid,crname,crsex,crschool,crmajor,crgrade,crage,crtel,cronline,cdbrithday,
+	cdmariage,cdhometown,cdnation,cdlandscape,cdchildren,cdeducation,cdgraduationtime,
+	cdcaidid,cdaccountaddress,cdpresentaddress,acquaintance,cdinformationsources,csname,cdwork,cdsalary,cddate FROM view_allcustomerinfo WHERE cronline=#{cronline,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 获得某客户现有信息  -->
+  <select id="customeroneinfo" resultMap="allcustomerMap" parameterType="java.lang.Integer">
+  	SELECT crid,eid,crname,crsex,crschool,crmajor,crgrade,crage,crtel,cronline,cdbrithday,
+	cdmariage,cdhometown,cdnation,cdlandscape,cdchildren,cdeducation,cdgraduationtime,
+	cdcaidid,cdaccountaddress,cdpresentaddress,acquaintance,cdinformationsources,csname,cdwork,cdsalary,cddate,cdtimeline FROM view_allcustomerinfo WHERE crid=#{crid,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 查看工作经历  -->
+  <select id="workexperience" resultMap="workexperienceMap" parameterType="java.lang.Integer">
+  	SELECT weid,westartime,wendtime,wecompanyname,wesalary,wewitness,wetel,weleavresons,weindustry,wedepartment,wepost,weobject,wepersonumber,weworkcontent,crid 
+  	FROM workexperience where crid=#{crid,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 修改工作经历 -->
+  <update id="updateexperience" parameterType="com.icss.bean.WorkExperience">
+  	update workexperience
+    <set >
+      <if test="westartime != null" >
+        westartime = #{westartime,jdbcType=VARCHAR},
+      </if>
+      <if test="wendtime != null" >
+        wendtime = #{wendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="wecompanyname != null" >
+        wecompanyname = #{wecompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="wesalary != null" >
+        wesalary = #{wesalary,jdbcType=VARCHAR},
+      </if>
+      <if test="wewitness != null" >
+        wewitness = #{wewitness,jdbcType=VARCHAR},
+      </if>
+      <if test="wetel != null" >
+        wetel = #{wetel,jdbcType=VARCHAR},
+      </if>
+      <if test="weleavresons != null" >
+        weleavresons = #{weleavresons,jdbcType=VARCHAR},
+      </if>
+      <if test="weindustry != null" >
+        weindustry = #{weindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="wedepartment != null" >
+        wedepartment = #{wedepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="wepost != null" >
+        wepost = #{wepost,jdbcType=VARCHAR},
+      </if>
+      <if test="weobject != null" >
+        weobject = #{weobject,jdbcType=VARCHAR},
+      </if>
+      <if test="wepersonumber != null" >
+        wepersonumber = #{wepersonumber,jdbcType=VARCHAR},
+      </if>
+      <if test="weworkcontent != null" >
+        weworkcontent = #{weworkcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        crid = #{crid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where weid = #{weid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 删除工作经历  -->
+  <delete id="deleteworkexperience" parameterType="java.lang.Integer">
+  	DELETE FROM workexperience WHERE weid = #{weid,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 新增工作经历 -->
+  <insert id="insertworkexperience" parameterType="com.icss.bean.WorkExperience" >
+    insert into workexperience
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="weid != null" >
+        weid,
+      </if>
+      <if test="westartime != null" >
+        westartime,
+      </if>
+      <if test="wendtime != null" >
+        wendtime,
+      </if>
+      <if test="wecompanyname != null" >
+        wecompanyname,
+      </if>
+      <if test="wesalary != null" >
+        wesalary,
+      </if>
+      <if test="wewitness != null" >
+        wewitness,
+      </if>
+      <if test="wetel != null" >
+        wetel,
+      </if>
+      <if test="weleavresons != null" >
+        weleavresons,
+      </if>
+      <if test="weindustry != null" >
+        weindustry,
+      </if>
+      <if test="wedepartment != null" >
+        wedepartment,
+      </if>
+      <if test="wepost != null" >
+        wepost,
+      </if>
+      <if test="weobject != null" >
+        weobject,
+      </if>
+      <if test="wepersonumber != null" >
+        wepersonumber,
+      </if>
+      <if test="weworkcontent != null" >
+        weworkcontent,
+      </if>
+      <if test="crid != null" >
+        crid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="weid != null" >
+        #{weid,jdbcType=INTEGER},
+      </if>
+      <if test="westartime != null" >
+        #{westartime,jdbcType=VARCHAR},
+      </if>
+      <if test="wendtime != null" >
+        #{wendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="wecompanyname != null" >
+        #{wecompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="wesalary != null" >
+        #{wesalary,jdbcType=VARCHAR},
+      </if>
+      <if test="wewitness != null" >
+        #{wewitness,jdbcType=VARCHAR},
+      </if>
+      <if test="wetel != null" >
+        #{wetel,jdbcType=VARCHAR},
+      </if>
+      <if test="weleavresons != null" >
+        #{weleavresons,jdbcType=VARCHAR},
+      </if>
+      <if test="weindustry != null" >
+        #{weindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="wedepartment != null" >
+        #{wedepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="wepost != null" >
+        #{wepost,jdbcType=VARCHAR},
+      </if>
+      <if test="weobject != null" >
+        #{weobject,jdbcType=VARCHAR},
+      </if>
+      <if test="wepersonumber != null" >
+        #{wepersonumber,jdbcType=VARCHAR},
+      </if>
+      <if test="weworkcontent != null" >
+        #{weworkcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        #{crid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <!--新增社会关系  -->
+  <insert id="insertSocial" parameterType="com.icss.bean.Socialrelations" >
+    insert into socialrelations
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srid != null" >
+        srid,
+      </if>
+      <if test="srname != null" >
+        srname,
+      </if>
+      <if test="srelations != null" >
+        srelations,
+      </if>
+      <if test="srworkcompany != null" >
+        srworkcompany,
+      </if>
+      <if test="srpost != null" >
+        srpost,
+      </if>
+      <if test="srtel != null" >
+        srtel,
+      </if>
+      <if test="crid != null" >
+        crid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srid != null" >
+        #{srid,jdbcType=INTEGER},
+      </if>
+      <if test="srname != null" >
+        #{srname,jdbcType=VARCHAR},
+      </if>
+      <if test="srelations != null" >
+        #{srelations,jdbcType=VARCHAR},
+      </if>
+      <if test="srworkcompany != null" >
+        #{srworkcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="srpost != null" >
+        #{srpost,jdbcType=VARCHAR},
+      </if>
+      <if test="srtel != null" >
+        #{srtel,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        #{crid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!--查看社会关系  -->
+  	<select id="selectSocail" resultMap="SocialrelationsMap" parameterType="java.lang.Integer" >
+    select srid, srname, srelations, srworkcompany, srpost, srtel, crid
+    from socialrelations
+    where crid = #{crid,jdbcType=INTEGER}
+  </select>
+  
+  <!--修改社会关系  -->
+    <update id="updateSocial" parameterType="com.icss.bean.Socialrelations" >
+    update socialrelations
+    <set >
+      <if test="srname != null" >
+        srname = #{srname,jdbcType=VARCHAR},
+      </if>
+      <if test="srelations != null" >
+        srelations = #{srelations,jdbcType=VARCHAR},
+      </if>
+      <if test="srworkcompany != null" >
+        srworkcompany = #{srworkcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="srpost != null" >
+        srpost = #{srpost,jdbcType=VARCHAR},
+      </if>
+      <if test="srtel != null" >
+        srtel = #{srtel,jdbcType=VARCHAR},
+      </if>
+      <if test="crid != null" >
+        crid = #{crid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srid = #{srid,jdbcType=INTEGER}
+  </update>
+  <!--删除社会关系  -->
+  <delete id="deleteSocial" parameterType="java.lang.Integer" >
+    delete from socialrelations
+    where srid = #{srid,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 查看所有客户状态  -->
+  <select id="allcustatus" resultMap="customerStatusMap">
+  	SELECT ci.crid , ci.eid ,ci.crname,ci.crtel,ci.cronline,  pc.cid
+	FROM customerinfo ci  LEFT JOIN pay_code pc ON ci.crid = pc.crid
+	ORDER BY crid DESC
+  </select>
+  
+  <!-- 查询一些用户信息 -->
+  <select id="somecusByname" resultMap="allcustomerMap" parameterType="java.lang.String">
+  <bind name="date" value=" _parameter + '%'" />
+  	SELECT cdid, crid,eid,crname,crsex,crschool,crmajor,crgrade,crage,crtel,cronline,cdbrithday,
+	cdmariage,cdhometown,cdnation,cdlandscape,cdchildren,cdeducation,cdgraduationtime,
+	cdcaidid,cdaccountaddress,cdpresentaddress,acquaintance,cdinformationsources,csname,cdwork,cdsalary,cddate FROM view_allcustomerinfo WHERE crname LIKE #{date,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 所有收款类型 -->
+  <select id="alltype" resultMap="PaytypeMap">
+  	SELECT ptid, ptname,pmoney FROM pay_type
+  </select>
+  
+  <!-- 所有学习方向 -->
+  <select id="allstudaycourse" resultMap="StudayMap">
+  	select syid, syname, studytime, stuition
+    from studydirection
+  </select>
+  
+  <!-- 所有住宿场所   -->
+  <select id="allSpace" resultMap="SpaceMap">
+  	SELECT spid, belongid, spname, price FROM space where belongid=0
+  </select>
+  
+  <!-- 批量更改客户状态为已退学 -->
+  <update id="variousupdatacus" parameterType="java.util.List">
+  	update customerinfo set cronline=6  where crid in (SELECT crid FROM students where sid in
+  	<foreach collection="list" item="item" index="index" open="(" separator="," close=")" >  
+        #{item}  
+    </foreach> )
+  </update>
+  
+</mapper>
