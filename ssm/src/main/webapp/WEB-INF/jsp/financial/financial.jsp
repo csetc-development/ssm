@@ -36,7 +36,7 @@
 <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>myjs/add_stu.js"></script>
+<script type="text/javascript" src="<%=basePath%>myjs/financial.js"></script>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
 				<ul class="nav nav-sidebar">
 					<li><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
 					<li><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
-					<li class="active"><a href="<%=basePath%>signed/incomepay.do">收入支出</a></li>
+					<li class="active"><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
 					
 					<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
 					<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
@@ -76,6 +76,12 @@
 							<thead>
 								<tr>
 									<td colspan="14">
+										<select id="">
+											<option value="1">待收款</option>
+											<option value="2">已收款</option>
+											<option value="3">待返款</option>
+											<option value="4">待退款</option>
+										</select>
 										<div class="btn-group">
 											
 											<button id="btn_edit" type="button" class="btn btn-xs btn-success" onclick="updatacustomerinfo()">
@@ -162,7 +168,7 @@
 	<!-- <script src="Dashboard_files/holder.htm"></script> -->
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="<%=basePath%>js/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="<%=basePath%>myjs/customer.js"></script>
+	<%-- <script type="text/javascript" src="<%=basePath%>myjs/customer.js"></script> --%>
 	<script src="<%=basePath%>js/page.js"></script>
 
 </body>

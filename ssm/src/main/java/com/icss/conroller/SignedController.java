@@ -51,11 +51,21 @@ public class SignedController {
 	 * @param request
 	 * @return 待收款的签单信息(查询第一页十条数据)
 	 */
-	@RequestMapping("incomepay.do")
-	public ModelAndView payment(HttpSession session){
+	@RequestMapping("firstincomepay.do")
+	public ModelAndView incomepay(HttpSession session){
 		List<Signed> list = (signedBusiness.financeSignedinfo(1,1)).getList();
 		session.setAttribute("pages", (signedBusiness.financeSignedinfo(1,1)).getPages());
 		return new ModelAndView("financial/financial","financial",list);
+	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("nextsignedinfo.do")
+	public @ResponseBody String nextsignedinfo(HttpServletRequest request){
+		return null;
 	}
 	
 	/**
@@ -64,8 +74,8 @@ public class SignedController {
 	 * @return 查看不同状态的签单信息
 	 * 用ajax传递数据(@ResponseBody)
 	 */
-	@RequestMapping("sginstatus.do")
-	public @ResponseBody String sginstatus(HttpServletRequest request){
+	@RequestMapping("signstatus.do")
+	public @ResponseBody String signstatus(HttpServletRequest request){
 		int stateid = Integer.parseInt(request.getParameter("status"));
 		int pagenum = Integer.parseInt(request.getParameter("pagenum"));
 		PageBean<Signed> list = signedBusiness.financeSignedinfo(stateid,pagenum);

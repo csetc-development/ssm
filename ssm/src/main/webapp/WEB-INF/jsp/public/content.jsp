@@ -21,6 +21,7 @@
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="<%=basePath %>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
 					<li><a href="<%=basePath %>signed/signedinfo.do">签单客户</a></li>
+					<li><a href="<%=basePath %>signed/firstincomepay.do">签单客户</a></li>
 <!-- 					<li><a href="<%=basePath %>customer/manager.do">客户管理</a></li> -->
 <!-- 					<li><a href="<%=basePath %>etcclass/management.do">班级管理</a></li> -->
 <!-- 					<li><a href="<%=basePath %>student/management.do">学员管理</a></li> -->
