@@ -3,9 +3,7 @@ package com.icss.business;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.http.HttpSession;
 
-import com.icss.bean.Empinfo;
 import com.icss.bean.ViewEmpallinfo;
 import com.icss.dao.ViewEmpallinfoMapper;
 import com.icss.util.PageBean;

@@ -1,5 +1,6 @@
 package com.icss.conroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.icss.bean.Department;
+import com.icss.bean.Permission;
+import com.icss.bean.Role;
 import com.icss.bean.User;
 import com.icss.bean.ViewEmpallinfo;
 import com.icss.business.DepartmentBusiness;
@@ -56,18 +59,32 @@ public class ViewEmpallinfoController {
 	public String showMe(HttpServletRequest request,HttpSession session){
 		Subject subject = SecurityUtils.getSubject();
 		User tempuser = userBusiness.getByUsername((String) subject.getPrincipal());
-		if(subject.isAuthenticated()){
 			int eid= tempuser.getEid();
-			System.out.println("eidgggggggggg"+eid);
+			String username = tempuser.getUsername();
 			ViewEmpallinfo empall = viewEmpallinfoBusiness.getoneemp(eid);
 			empall.setPassword("");
 			session.setAttribute("loginemp", empall);
+			//获取个人信息的用户角色描述
+			List<Role> rolelist= userBusiness.getRoles(username);
+			List<String> roles = new ArrayList<String>();  
+			 if(rolelist!=null){  
+		            for(Role Role:rolelist){  
+		                //将数据库中角色限描述放入集合  
+		            	roles.add(Role.getDescription());  
+		            }  
+		        }	
+			//获取个人信息的用户权限描述
+			List<Permission> permslist= userBusiness.getPermissions(username);
+			List<String> permissions = new ArrayList<String>();  
+			 if(permslist!=null){  
+		            for(Permission Permission:permslist){  
+		                //将数据库中的权限描述放入集合  
+		            	permissions.add(Permission.getDescription());  
+		            }  
+		        }
+			session.setAttribute("empinforoles", roles);
+			session.setAttribute("empinfopermissions", permissions);
 			return "public/mine";
-		}else{
-			return "redirect:/login.jsp";
-		}
-		
-		
 	}
 	
 	//修改个人信息(页面跳转)

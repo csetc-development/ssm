@@ -1,11 +1,20 @@
 package com.icss.bean;
 
 public class Role {
-    private Integer rid;
+
+	private Integer rid;
+
+    private String name;
 
     private String description;
 
-    private Integer pid;
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+	}
 
     public Integer getRid() {
         return rid;
@@ -23,11 +32,4 @@ public class Role {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 }
