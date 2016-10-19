@@ -148,11 +148,15 @@
         <h4 class="modal-title">导入签单信息</h4>
       </div>
       <div class="modal-body">
-        <input type="file"/>
+      <form action="sale/readExcel.do" enctype="multipart/form-data" method="post" >    
+       						<input id="excelFile" type="file" name="excelFile" size="50"/>       				 
+       				  		<input type="submit">
+    	</form> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary">导入</button>
+      
       </div>
     </div>
   </div>

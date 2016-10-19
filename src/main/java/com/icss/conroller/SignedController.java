@@ -4,12 +4,17 @@
  */
 package com.icss.conroller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.jms.Session;
 import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONArray;
@@ -18,13 +23,17 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icss.bean.Iaer;
 import com.icss.bean.Signed;
 import com.icss.business.SignedBusiness;
 import com.icss.util.PageBean;
+import com.icss.util.ReadExcel;
 
 @Controller
 @RequestMapping("signed")
@@ -109,6 +118,56 @@ public class SignedController {
 		signedBusiness.addAndChange(request, iaer);
 		return null;
 	}
+	
+	/** 
+     * 读取Excel数据到数据库 
+     * @param file 
+     * @param request 
+     * @return 
+     * @throws IOException 
+     * @author chen
+	 * @throws ServletException 
+     */  
+    @RequestMapping(value="readExcel.do")   
+    public ModelAndView readExcel(@RequestParam(value="file") MultipartFile mFile,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException, ServletException{  
+   
+   	
+    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+    	mFile = multipartRequest.getFile("file");
+    	String path = request.getSession().getServletContext().getRealPath("/WEB-INF/upload/");
+    	System.out.println(path);
+    	String name = mFile.getOriginalFilename();   //获取文件名     
+    	System.out.println(name);
+    	InputStream inputStream = mFile.getInputStream();
+    	 
+    	 byte[] b = new byte[1048576];
+    	 int length = inputStream.read(b);
+    	 path += "\\" + name;
+    	 FileOutputStream outputStream = new FileOutputStream(path);
+    	 outputStream.write(b, 0, length);
+    	 inputStream.close();
+    	 outputStream.close();
+       
+
+    	ReadExcel xlsMain = new ReadExcel();
+    	Signed signed=null;
+    	try {
+			List<Signed> ListResult =xlsMain.ReadInExcel(path);
+			if(ListResult!=null){				
+				for(int i=0;i<ListResult.size();i++){
+					signed=ListResult.get(i);
+					signedBusiness.InsertSigned(signed);
+					
+			}				
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+        return null ;  
+    }
 	
 	
 }

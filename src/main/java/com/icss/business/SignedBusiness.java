@@ -65,4 +65,16 @@ public class SignedBusiness {
 		System.out.println(iaer.getHandler());
 		return 0;
 	}
+	/** 
+     * 读取Excel数据到数据库 
+     * @param signed 
+     * @return 
+     * @author chen
+     */  
+	
+	public void InsertSigned(Signed signed){
+		if(signed!=null){	
+			signedDao.insertSelective(signed);			
+		}	
+	}
 }
