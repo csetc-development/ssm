@@ -64,11 +64,6 @@ public class ReadExcel {
 	            	System.out.println(hssfSheet.getLastRowNum());
 	            	HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 	            	if (hssfRow!= null) {
-	            		System.out.println("住宿费  ="+hssfRow.getCell(10));
-	            		System.out.println("定金  ="+hssfRow.getCell(12));
-	            		System.out.println("补贴  ="+hssfRow.getCell(11));
-	            		System.out.println("人数  ="+hssfRow.getCell(8));
-	            		System.out.println("学费  ="+hssfRow.getCell(9));
 	            		signed= new Signed();
 	            		HSSFCell stime=hssfRow.getCell(0);
 	            		HSSFCell scustomername=hssfRow.getCell(1);
@@ -88,7 +83,7 @@ public class ReadExcel {
 	            		HSSFCell sarea=hssfRow.getCell(15);
 	            		HSSFCell sbusinessstype=hssfRow.getCell(16);
 	            		HSSFCell sremark=hssfRow.getCell(17);
-	            		HSSFCell stateid=hssfRow.getCell(17);
+	            	
 	            		
 	            		
 	            		signed.setStime(getValue(stime));
@@ -108,22 +103,24 @@ public class ReadExcel {
 	            		signed.setSbusinesstype(getValue(sbusinessstype));
 	            		signed.setSremark(getValue(sremark));
 	            		
-	            		//转换时需要进行非空判断empty String和“”;
+	            		/*//转换时需要进行非空判断empty String和“”;
 	            		if(speplenum!=null&&speplenum.equals("")){
 	            			System.out.println("我进来了。");
 	            			
-	            		}
+	            		}*/
 	            		try {
 	            			signed.setSpacefee(Float.valueOf(getValue(spacefee).trim()));
 	            			signed.setSpeoplenum(Integer.valueOf(getValue(speplenum).trim()));
 	            			signed.setStudyfee(Float.valueOf(getValue(studyfee).trim()));
 	            			signed.setBackfee(Float.valueOf(getValue(backfee).trim()));
-	            			signed.setStateid(Integer.valueOf(getValue(stateid).trim()));
-	            			signed.setDepositfee(Float.valueOf(getValue(depositfree).trim()));
+	            			signed.setStateid(1);
+	            			signed.setDepositfee(Float.valueOf(getValue(depositfree)));
+	            			//System.out.println("定金youduoshao"+signed.getDepositfee());
 						} catch (Exception e) {
-							// TODO: handle exception
+							System.out.println(e);
 						}           		
 	            		list.add(signed);
+	            		//System.out.println("定金youduoshao==="+signed.getDepositfee());
 	            		
 	            	}
 	            	
@@ -170,7 +167,7 @@ public class ReadExcel {
 		            		XSSFCell sarea=hssfRow.getCell(15);
 		            		XSSFCell sbusinessstype=hssfRow.getCell(16);
 		            		XSSFCell sremark=hssfRow.getCell(17);
-		            		XSSFCell stateid=hssfRow.getCell(18);
+		            	//	XSSFCell stateid=hssfRow.getCell(18);
 		            		
 		            		signed.setStime(getValue(stime));
 		            		signed.setScustomername(getValue(scustomername));
@@ -199,12 +196,13 @@ public class ReadExcel {
 		            			signed.setStudyfee(Float.valueOf(getValue(studyfee).trim()));
 		            			signed.setBackfee(Float.valueOf(getValue(backfee).trim()));
 		            			signed.setDepositfee(Float.valueOf(getValue(depositfree).trim()));
-		            			signed.setStateid(Integer.valueOf(getValue(stateid).trim()));
+		            			signed.setStateid(1);
 		            			
 							} catch (Exception e) {
 								// TODO: handle exception
 							}           		
 		            		list.add(signed);
+		            		System.out.println(signed.getDepositfee());
 		            		
 		            	}
 		            	

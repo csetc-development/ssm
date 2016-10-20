@@ -156,8 +156,9 @@ public class SignedController {
 			if(ListResult!=null){				
 				for(int i=0;i<ListResult.size();i++){
 					signed=ListResult.get(i);
-					System.out.println("zhusufei"+ListResult.get(i).getSpacefee());
+					//System.out.println("zhusufei"+ListResult.get(i).getSpacefee());
 					System.out.println(".."+ListResult.get(i).getDepositfee());
+				
 					signedBusiness.InsertSigned(signed);
 					
 			}				

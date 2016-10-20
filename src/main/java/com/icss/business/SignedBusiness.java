@@ -73,8 +73,9 @@ public class SignedBusiness {
      */  
 	
 	public void InsertSigned(Signed signed){
-		if(signed!=null){	
-			signedDao.insert(signed);	
-		}
+			System.out.println(signed.getBackfee());	
+			System.out.println(signed.getDept());	
+			signedDao.insertSelective(signed);	
+		
 	}
 }
