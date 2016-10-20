@@ -74,7 +74,7 @@ public class SignedBusiness {
 	
 	public void InsertSigned(Signed signed){
 		if(signed!=null){	
-			signedDao.insertSelective(signed);			
-		}	
+			signedDao.insert(signed);	
+		}
 	}
 }

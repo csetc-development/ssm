@@ -148,8 +148,8 @@
         <h4 class="modal-title">导入签单信息</h4>
       </div>
       <div class="modal-body">
-      <form action="sale/readExcel.do" enctype="multipart/form-data" method="post" >    
-       						<input id="excelFile" type="file" name="excelFile" size="50"/>       				 
+      <form action="signed/readExcel.do" enctype="multipart/form-data" method="post" >    
+       						<input id="file" type="file" name="file" />       				 
        				  		<input type="submit">
     	</form> 
       </div>

@@ -20,7 +20,7 @@ public class SignedMapperImpl extends BasicSqlSupport implements SignedMapper{
 	@Override
 	public int insert(Signed record) {
 		// TODO Auto-generated method stub
-		return 0;
+		 return this.session.selectOne("com.icss.dao.SignedMapper.insert", record);
 	}
 
 	@Override
