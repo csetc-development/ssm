@@ -32,4 +32,6 @@ public interface SignedMapper {
     
     List<String> selectByname(String Customername);
     
+    
+    
 }

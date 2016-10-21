@@ -52,7 +52,7 @@ public class SignedBusiness {
 	 * @return 根据id查询整个签单信息
 	 */
 	public Signed selectSignedById(HttpServletRequest request){
-		int sid = Integer.parseInt(request.getParameter("sid"));
+		int sid = Integer.parseInt(request.getParameter("sid"));		
 		return signedDao.onesignedinfo(sid);
 	}
 	
@@ -91,4 +91,5 @@ public class SignedBusiness {
 			signedDao.insertSelective(signed);	
 		
 	}
+
 }

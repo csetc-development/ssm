@@ -134,7 +134,7 @@ public class SignedController {
    	
     	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
     	mFile = multipartRequest.getFile("input-1");
-    	String path = request.getSession().getServletContext().getRealPath("/WEB-INF/upload/");
+    	String path = request.getSession().getServletContext().getRealPath("/WEB-INF/upload/");//获取文件名 的路径
     	System.out.println(path);
     	String name = mFile.getOriginalFilename();   //获取文件名     
     	System.out.println(name);
@@ -168,6 +168,17 @@ public class SignedController {
 	
         return new ModelAndView("sale/signed") ;  
     }
+    /**
+	 * @param request
+	 * @return 返款签单的信息
+	 */ 
+    @RequestMapping(value="BackFreeId.do")   
+	public @ResponseBody String BackFree(HttpServletRequest request,HttpSession session){
+		JSONArray jsonArray = JSONArray.fromObject(signedBusiness.selectSignedById(request));
+		System.out.println(jsonArray.toString());
+		return jsonArray.toString();
 	
+
+	}
 	
 }

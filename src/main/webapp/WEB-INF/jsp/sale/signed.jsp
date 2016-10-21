@@ -38,6 +38,7 @@
 <script type="text/javascript" src="<%=basePath%>js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>myjs/add_stu.js"></script>
+
 </head>
 
 <body>
@@ -156,11 +157,9 @@
       		    <button type="submit" class="btn btn-primary">导入</button>
          	</div>
     	</form> 
-      </div>
-       
-      
-   
+      </div> 
   </div>
+</div>
 </div>
 	
 	<%@ include file="../public/footer.jsp"%>
@@ -173,6 +172,8 @@
 	<script src="<%=basePath%>js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="<%=basePath%>myjs/customer.js"></script>
 	<script src="<%=basePath%>js/page.js"></script>
+	
+
 
 </body>
 </html>
