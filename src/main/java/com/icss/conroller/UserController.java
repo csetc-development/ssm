@@ -179,7 +179,7 @@ public class UserController {
     	List<ViewUserEmpallinfo> viewUserEmpallinfo = page.getList();
 		session.setAttribute("viewUserEmpallinfo", viewUserEmpallinfo);
 		session.setAttribute("pages", page.getPages());	
-		//没有用户的员工页数放入session
+		//没有用户的员工页数放入session(为了使其查看正常页码，从数据库取出提前放好，再到JS中ajax使用)
 		PageBean<ViewUserEmpallinfo> page2 = getUserEmpinfo(1,false);
 		session.setAttribute("nullpages",page2.getPages());
         return "admin/users";

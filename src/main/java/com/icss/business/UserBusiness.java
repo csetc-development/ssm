@@ -76,6 +76,8 @@ public class UserBusiness {
 		return userDao.getAllRole();
 	} 
 	
+	
+	
 	/**  
      * 得到所有的权限信息
      * @param  无
@@ -85,7 +87,7 @@ public class UserBusiness {
 	public List<Permission> getAllPerms() {
 		return userDao.getAllPerms();
 	} 
-	
+
 	
 	/**  
      * 根据角色ID得到该角色的权限信息

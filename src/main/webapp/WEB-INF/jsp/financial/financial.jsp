@@ -44,26 +44,23 @@
 	<input value="${pages }" id="pagecount" type="hidden">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
-					<li><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
-					<li class="active"><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
-					
-					<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
-					<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
-					<li><a href="<%=basePath%>empinfo/empmanagement.do">员工管理</a></li>
-					<li><a href="<%=basePath%>paycode/Codes.do">业务管理</a></li>
-					<li><a href="<%=basePath%>paycode/reports.do">数据统计</a></li> --%>
-					
-				</ul>
-				
-				<%-- <ul class="nav nav-sidebar">
-					<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li>
-					<li><a href="<%=basePath%>admin/manager.do">管理员</a></li>
-				</ul> --%>
-				<div id="tree"></div>
-			</div>
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li ><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
+				<li ><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
+				<li  class="active"><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
+				<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
+				<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
+				<li><a href="<%=basePath%>empinfo/empmanagement.do">员工管理</a></li>
+				<li><a href="<%=basePath%>paycode/Codes.do">业务管理</a></li>
+				<li><a href="<%=basePath%>paycode/reports.do">数据统计</a></li> --%>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<%--<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li> --%>
+				<li><a href="<%=basePath%>user/haveuserinfo.do">用户管理</a></li>
+			</ul>
+			<div id="tree"></div>
+		</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
 				<div class="container" style="height:20px;"></div>
@@ -147,7 +144,7 @@
 	</div>
 
 <div class="modal" id="incomeinfo" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -159,9 +156,16 @@
 	      <div class="modal-body">
 		      <div class="panel panel-default">
 				  <div class="panel-heading">
-				  	<span>日期：</span><input name="time" type="text" style="border-style:none">&nbsp;
-	      			<span>经手人：</span><input name="handler" type="text" style="border-style:none">
-	      		  </div>
+					  	 <div class="container">
+				      		<div class="row">
+				      			<div class="col-sm-3">
+				      				<span>日期：</span><input name="time" type="text" style="border-style:none; background:rgba(0,0,0,0)" readonly="readonly"></div>
+				      			<div class="col-sm-4">
+				      				<span>经手人：</span><input name="handler" type="text" style="border-style:none; background:rgba(0,0,0,0)" readonly="readonly">
+				      			</div>
+			      		 	</div>
+		      		 	</div>
+	      		 	</div>
 				  <div class="panel-body">
 				    <div class="container">
 			      		<div class="row">

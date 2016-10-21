@@ -23,7 +23,10 @@
 		<typeAlias type="com.icss.bean.Students" alias="Students"/>
 		<typeAlias type="com.icss.bean.Etcclass" alias="Etcclass"/>
 		<typeAlias type="com.icss.bean.User" alias="User"/>
+		<typeAlias type="com.icss.bean.Role" alias="Role"/>
+		<typeAlias type="com.icss.bean.Permission" alias="Permission"/>
 		<typeAlias type="com.icss.bean.UserRole" alias="UserRole"/>
+		<typeAlias type="com.icss.bean.RolePerm" alias="RolePerm"/>
 		<typeAlias type="com.icss.bean.ViewUserEmpallinfo" alias="ViewUserEmpallinfo"/>
 		<typeAlias type="com.icss.bean.Signed" alias="Signed"/>
 	</typeAliases>
@@ -81,5 +84,8 @@
 		<mapper resource="com/mybatis/mapper/ViewUserEmpallinfoMapper.xml" />
 		<mapper resource="com/mybatis/mapper/UserRoleMapper.xml" />
 		<mapper resource="com/mybatis/mapper/SignedMapper.xml" />
+		<mapper resource="com/mybatis/mapper/RoleMapper.xml" />
+		<mapper resource="com/mybatis/mapper/PermissionMapper.xml" />
+		<mapper resource="com/mybatis/mapper/RolePermMapper.xml" />
 	</mappers>
 </configuration>

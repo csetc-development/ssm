@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
 	
-	<title>ETC-修改客户信息</title>
+	<title>ETC-添加客户信息</title>
 	<link href="<%=basePath%>css/public.css" rel="stylesheet" type="text/css">
 	<!-- Bootstrap core CSS -->
 	<link href="<%=basePath%>css/bootstrap.min.css" rel="stylesheet">
