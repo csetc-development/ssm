@@ -8,16 +8,20 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.jms.Session;
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONArray;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.icss.bean.Iaer;
 import com.icss.bean.Signed;
 import com.icss.business.SignedBusiness;
 import com.icss.util.PageBean;
@@ -82,6 +86,29 @@ public class SignedController {
 		JSONArray jsonArray = JSONArray.fromObject(list);
 		return jsonArray.toString();
 	} 
+	
+	/**
+	 * @param request
+	 * @return 一条签单的信息
+	 */
+	@RequestMapping("onesign.do")
+	public @ResponseBody String onesign(HttpServletRequest request){
+		JSONArray jsonArray = JSONArray.fromObject(signedBusiness.selectSignedById(request));
+		System.out.println(jsonArray.toString());
+		return jsonArray.toString();
+	}
+	
+	/**
+	 * 增加一条收款记录，修改签单信息（有需要的话）
+	 * @param signed
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("addoneiaer.do")
+	public String addoneiaer(@ModelAttribute("iaer") Iaer iaer, HttpServletRequest request){
+		signedBusiness.addAndChange(request, iaer);
+		return "redirect:/signed/firstincomepay.do";
+	}
 	
 	
 }

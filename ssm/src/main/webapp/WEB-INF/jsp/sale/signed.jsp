@@ -48,7 +48,7 @@
 				<ul class="nav nav-sidebar">
 					<li><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
 					<li class="active"><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
-					<li><a href="<%=basePath%>signed/incomepay.do">收入支出</a></li>
+					<li><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
 					<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
 					<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
 					<li><a href="<%=basePath%>empinfo/empmanagement.do">员工管理</a></li>

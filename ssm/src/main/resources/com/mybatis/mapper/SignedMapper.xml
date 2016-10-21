@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- @author 李敏  -->
+<!-- @date 2016/10/17 -->
 <mapper namespace="com.icss.dao.SignedMapper" >
   <resultMap id="BaseResultMap" type="com.icss.bean.Signed" >
     <id column="sid" property="sid" jdbcType="INTEGER" />
@@ -45,6 +47,15 @@
     <result column="sremark" property="sremark" jdbcType="VARCHAR" />
     <result column="stateid" property="stateid" jdbcType="INTEGER" />
     <result column="condition" property="condition" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="IaerMap" type="com.icss.bean.Iaer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="REAL" />
+    <result column="handler" property="handler" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     sid, stime, sbusinesstype, scustomername, scustomerschool, scustomercollege, scustomermajor, 
@@ -312,7 +323,21 @@
 	 LEFT JOIN (SELECT sid,sum(amount) allmoney FROM iaer GROUP BY sid) s ON s.sid = si.sid
 	 WHERE si.stateid=#{stateid,jdbcType=INTEGER}
   </select>
-
+  
+  <!-- 查询单个签单的所有信息，包括已缴金额  -->
+  <select id="onesignedinfo"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select si.sid, stime, sbusinesstype, scustomername, scustomerschool, scustomercollege, scustomermajor, scustomercardid, scustomerbankcardid,
+	 scustomergrade, speoplenum, studyfee, spacefee, backfee, depositfee, sale, dept, sarea, sremark,si.stateid,IFNULL(allmoney,0) `condition`
+	 from signed si LEFT JOIN (SELECT sid,sum(amount) allmoney FROM iaer WHERE sid=#{sid,jdbcType=INTEGER}) s ON s.sid = si.sid WHERE si.sid=#{sid,jdbcType=INTEGER}
+  </select>
+	
+  <!-- 增加收支记录 -->
+  <insert id="addrecord" parameterType="com.icss.bean.Iaer" >
+    insert into iaer (id, time, type, amount, handler, remark, sid)
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=REAL}, #{handler,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{sid,jdbcType=INTEGER})
+  </insert>
 
   
   

@@ -5,10 +5,11 @@
  */
 package com.icss.business;
 
-import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.icss.bean.Iaer;
 import com.icss.bean.Signed;
 import com.icss.bean.User;
 import com.icss.dao.SignedMapper;
@@ -43,5 +44,33 @@ public class SignedBusiness {
 	 */
 	public PageBean<Signed> financeSignedinfo(int stateid,int pagenum){
 		return signedDao.pending(stateid,pagenum); 
+	}
+	
+	/**
+	 * @param request
+	 * @return 根据id查询整个签单信息
+	 */
+	public Signed selectSignedById(HttpServletRequest request){
+		int sid = Integer.parseInt(request.getParameter("sid"));
+		System.out.println(sid);
+		return signedDao.onesignedinfo(sid);
+	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @param iaer
+	 * @return 插入表格状态
+	 */
+	public int addAndChange(HttpServletRequest request, Iaer iaer){
+		iaer.setType("收入");
+		signedDao.addrecord(iaer);
+		if(request.getParameter("stateid")!=""&&request.getParameter("stateid")!=null ){
+			Signed signed = new Signed();
+			signed.setSid(iaer.getSid());
+			signed.setStateid(Integer.parseInt(request.getParameter("stateid")));
+			signedDao.updateByPrimaryKeySelective(signed);
+		}
+		return 1;
 	}
 }

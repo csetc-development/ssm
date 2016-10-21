@@ -198,7 +198,7 @@ function updatacustomerinfo(){
 	if(cuscheckbox.length>1){
 		alert("只能修改一个客户信息，请修改选中信息！")
 	}else{
-		cuscheckbox.each(function(){ //由于复选框一般选中的是多个,所以可以循环输出 
+		cuscheckbox.each(function(){  
 			var crid = $(this).val();
 			window.location.href="customer/updatecustrunonjsp.do?crid="+crid;
 		}); 
@@ -214,7 +214,7 @@ function delectcustomerinfo(){
 			return false;
 		}
 		var checkboxarray ="";
-		cuscheckbox.each(function(){
+		cuscheckbox.each(function(){ //由于复选框一般选中的是多个,所以可以循环输出 
 			checkboxarray += $(this).val()+",";
 		});
 		window.location.href="customer/batchupdatecus.do?str="+checkboxarray;

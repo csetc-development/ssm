@@ -3,6 +3,7 @@ package com.icss.impl;
 import java.util.List;
 
 import com.github.pagehelper.PageHelper;
+import com.icss.bean.Iaer;
 import com.icss.bean.Signed;
 import com.icss.dao.SignedMapper;
 import com.icss.util.BasicSqlSupport;
@@ -31,13 +32,13 @@ public class SignedMapperImpl extends BasicSqlSupport implements SignedMapper{
 	@Override
 	public Signed selectByPrimaryKey(Integer sid) {
 		// TODO Auto-generated method stub
-		return null;
+		return this.session.selectOne("com.icss.dao.SignedMapper.selectByPrimaryKey", sid);
 	}
 
 	@Override
 	public int updateByPrimaryKeySelective(Signed record) {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.session.update("com.icss.dao.SignedMapper.updateByPrimaryKeySelective", record);
 	}
 
 	@Override
@@ -60,6 +61,18 @@ public class SignedMapperImpl extends BasicSqlSupport implements SignedMapper{
 		PageHelper.startPage(pagenum, CustomerinfoMapperImpl.PAGESIZE);
 		List<Signed> list = this.session.selectList("com.icss.dao.SignedMapper.pending",stateid);
 		return new PageBean<Signed>(list);
+	}
+
+	@Override
+	public Signed onesignedinfo(int sid) {
+		// TODO Auto-generated method stub
+		return this.session.selectOne("com.icss.dao.SignedMapper.onesignedinfo",sid);
+	}
+
+	@Override
+	public int addrecord(Iaer iaer) {
+		// TODO Auto-generated method stub
+		return this.session.insert("com.icss.dao.SignedMapper.addrecord", iaer);
 	}
 
 }
