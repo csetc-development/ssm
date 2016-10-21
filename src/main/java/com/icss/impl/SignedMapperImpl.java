@@ -76,4 +76,18 @@ public class SignedMapperImpl extends BasicSqlSupport implements SignedMapper{
 		return this.session.insert("com.icss.dao.SignedMapper.addrecord", iaer);
 	}
 
+	@Override
+	public List<String> selectByCardId(String CardId) {
+		// TODO Auto-generated method stub
+		return this.session.selectList("com.icss.dao.SignedMapper.selectByCardId", CardId);
+	}
+
+	@Override
+	public List<String> selectByname(String Customername) {
+		// TODO Auto-generated method stub
+		return this.session.selectList("com.icss.dao.SignedMapper.selectByCardId", Customername);
+	}
+
+	
+
 }

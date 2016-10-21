@@ -22,6 +22,7 @@
 <!-- Custom styles for this template -->
 <link href="<%=basePath%>css/dashboard.css" rel="stylesheet">
 <link href="<%=basePath%>css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="<%=basePath%>css/fileinput.min.css" rel="stylesheet">
 
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -147,18 +148,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">导入签单信息</h4>
       </div>
-      <div class="modal-body">
-      <form action="signed/readExcel.do" enctype="multipart/form-data" method="post" >    
-       						<input id="file" type="file" name="file" />       				 
-       				  		<input type="submit">
+      <div class="input-group">
+      <form action="signed/readExcel.do" enctype="multipart/form-data" method="post" >   
+					<input id="input-1" type="file" class="file">
+       		<div class="modal-footer" >
+        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      		    <button type="submit" class="btn btn-primary">导入</button>
+         	</div>
     	</form> 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary">导入</button>
+       
       
-      </div>
-    </div>
+   
   </div>
 </div>
 	

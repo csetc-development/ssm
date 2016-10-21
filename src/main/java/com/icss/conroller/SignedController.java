@@ -129,11 +129,11 @@ public class SignedController {
 	 * @throws ServletException 
      */  
     @RequestMapping(value="readExcel.do")   
-    public ModelAndView readExcel(@RequestParam(value="file") MultipartFile mFile,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException, ServletException{  
+    public ModelAndView readExcel(@RequestParam(value="input-1") MultipartFile mFile,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException, ServletException{  
    
    	
     	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-    	mFile = multipartRequest.getFile("file");
+    	mFile = multipartRequest.getFile("input-1");
     	String path = request.getSession().getServletContext().getRealPath("/WEB-INF/upload/");
     	System.out.println(path);
     	String name = mFile.getOriginalFilename();   //获取文件名     
@@ -155,13 +155,10 @@ public class SignedController {
 			List<Signed> ListResult =xlsMain.ReadInExcel(path);
 			if(ListResult!=null){				
 				for(int i=0;i<ListResult.size();i++){
-					signed=ListResult.get(i);
-					//System.out.println("zhusufei"+ListResult.get(i).getSpacefee());
-					System.out.println(".."+ListResult.get(i).getDepositfee());
-				
+					signed=ListResult.get(i);				
 					signedBusiness.InsertSigned(signed);
 					
-			}				
+				}				
 			}
 			
 		} catch (Exception e) {
@@ -169,7 +166,7 @@ public class SignedController {
 			e.printStackTrace();
 		}
 	
-        return null ;  
+        return new ModelAndView("sale/signed") ;  
     }
 	
 	
