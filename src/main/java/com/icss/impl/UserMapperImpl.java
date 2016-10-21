@@ -117,7 +117,7 @@ public class UserMapperImpl extends BasicSqlSupport implements UserMapper{
 		// TODO Auto-generated method stub
 		return this.session.selectList("com.icss.dao.UserMapper.getAllRole");
 	}
-
+	
 	@Override
 	public List<Permission> getAllPerms() {
 		// TODO Auto-generated method stub

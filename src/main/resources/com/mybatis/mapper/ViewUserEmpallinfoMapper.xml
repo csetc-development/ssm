@@ -121,7 +121,7 @@
 	WHERE u.username is NULL and e.eid = #{eid,jdbcType=INTEGER}
   </select>
      <select id="getHaveByrname" resultMap="BaseResultMap" parameterType="java.lang.String">
-      <bind name="ename" value=" _parameter + '%'" />
+      <bind name="ename" value="'%'+ _parameter + '%'" />
 	select 
 	`e`.`eid` AS `eid`,`e`.`ename` AS `ename`,`e`.`esex` AS `esex`,`e`.`ebrithday` AS `ebrithday`,`d`.`d_name` AS `dName`,`e`.`ejob` AS `ejob`,`u`.`username` AS `username`,`r`.`description` AS `rdescription`
 	FROM
@@ -133,7 +133,7 @@
 	where e.ename like  #{ename,jdbcType=VARCHAR} 
   </select>
      <select id="getNotHaveByrname" resultMap="BaseResultMap" parameterType="java.lang.String">
-	 <bind name="ename" value=" _parameter + '%'" />
+	 <bind name="ename" value="'%'+ _parameter + '%'" />
 	  SELECT
 	e.ename,e.esex,e.ebrithday,d.d_name,e.ejob,e.eid
 	FROM

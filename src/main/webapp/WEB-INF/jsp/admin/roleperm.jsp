@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>ETC-用户管理</title>
+    <title>ETC-角色权限管理</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="<%=basePath%>js/bootstrap.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/page.js"></script>
-	<script type="text/javascript" src="<%=basePath%>myjs/users.js"></script>
+	<script type="text/javascript" src="<%=basePath%>myjs/roleperm.js"></script>
   </head>
   
   <body>
@@ -61,73 +61,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			<ul class="nav nav-sidebar">
 				<%--<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li> --%>
-				<li class="active"><a href="<%=basePath%>user/haveuserinfo.do">用户管理</a></li>
-				<li ><a href="<%=basePath%>roleperm/roleinfo.do">角色权限管理</a></li>
+				<li ><a href="<%=basePath%>user/haveuserinfo.do">用户管理</a></li>
+				<li class="active"><a href="<%=basePath%>roleperm/roleinfo.do">角色权限管理</a></li>
 			</ul>
 			<div id="tree"></div>
 		</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">				
-				<h1 class="page-header">用户管理</h1>
+				<h1 class="page-header">角色权限管理</h1>
 				<div class="text-right">
 					 <form class="navbar-form navbar-right" role="search">
 				        <div class="form-group">
-				          <input class="form-control input-sm" placeholder="请输入用户姓名" type="text" id="serchName" name="serchName">
+				          <input class="form-control input-sm" placeholder="请输入描述进行搜索" type="text" id="serchName" name="serchName">
 				       	  <input value="1" id="searchetype" name="searchetype" type="hidden">
 				        </div>
 				        <a class="btn btn-default btn-sm" onclick="searcheByName()">搜索</a>
 				      </form>
 				</div>
 				<ul class="nav nav-pills">
-					<li class="active"><a href="#haveuseremp" data-toggle="tab">已有用户的员工</a></li>
-					<li><a href="#nulluseremp" data-toggle="tab">没有用户的员工</a></li>
+					<li class="active"><a href="#role" data-toggle="tab">角色管理</a></li>
+					<li><a href="#perm" data-toggle="tab">权限管理</a></li>
 
 				</ul>
 				<div class="container" style="height:20px;"></div>
 				<div class="tab-content">
-					<div class="tab-pane fade in active" id="haveuseremp">
-						<input value="${pages }" id="pagecount" type="hidden">
+				<div class="tab-pane fade in active" id="role">
+						<input value="${rolepages }" id="rolepagecount" type="hidden">
 						<div class="btn-group"> 
-							<button id="btn_edit" type="button" class="btn btn-sm btn-success" onclick="updateuserinfo()">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true">修改用户</span>
-							</button>
-							<button id="btn_delete" type="button" class="btn btn-sm btn-warning" onclick="delectuserinfo()">
-								<span class="glyphicon glyphicon-remove" aria-hidden="true">删除用户</span>
+							<button id="btn_edit" type="button" class="btn btn-sm btn-success" onclick="updateroleinfo()">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true">修改角色信息</span>
 							</button>
 						</div>
-						<table class="table table-striped table-hover table-responsive table-bordered " id="haveusertable">
+						<table  class="table table-striped table-hover table-responsive table-bordered " id="roletable">
 							<thead>
 								<tr>
 								  <th>&nbsp;</th>
-								  <th colspan="5" align="center" >员工信息</th>
-								  <th colspan="3" align="center">用户信息</th>
+								  <th colspan="5" align="center" >角色信息</th>
 								  </tr>
 								<tr>
-								  <th><input type="checkbox" id="alluseremp" ></th>
-								  <th>姓名</th>
-								  <th>性别</th>
-								  <th>出生年月</th>
-								  <th>部门</th>
-								  <th>职务</th>
-								  <th>用户名</th>
-								  <th>角色</th>
-								  <th>权限</th>
+								  <th><input type="checkbox" id="role_selectall" ></th>
+								  <th>id</th>
+								  <th>字段</th>
+								  <th>描述</th>
+								  <th>对应权限</th>
 								</tr>
 							  </thead>
 							  <tbody>
-							  	<c:if test="${empty viewUserEmpallinfo }">
+							  	<c:if test="${empty role }">
 							  		暂时没有相关数据
 							  	</c:if>
-							  	<c:forEach items="${viewUserEmpallinfo }" var="viewUser">
+							  	<c:forEach items="${role }" var="role">
 							  		<tr>
-							  			<td><input type="checkbox" name="alluseremp_checkbox" value="${viewUser.eid }"  ></td>
-							  			<td>${viewUser.ename }</td>
-							  			<td>${viewUser.esex }</td>
-							  			<td>${viewUser.ebrithday }</td>
-							  			<td>${viewUser.dName }</td>
-							  			<td>${viewUser.ejob }</td>
-							  			<td>${viewUser.username }</td>
-							  			<td>${viewUser.rdescription }</td>
-							  			<td>${viewUser.pdescription }</td>
+							  			<td><input type="checkbox" name="role_checkbox" value="${role.rid }"  ></td>
+							  			<td>${role.rid }</td>
+							  			<td>${role.name }</td>
+							  			<td>${role.description }</td>
+							  			<td>${role.permlist }</td>
 							  		</tr>
 							  	</c:forEach>
 							  </tbody>
@@ -139,14 +127,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 
-					<div class="tab-pane fade" id="nulluseremp">
-							<input value="${nullpages }" id="nullpagecount" type="hidden">
+					<div class="tab-pane fade" id="perm">
+							<input value="${permpages }" id="permpagecount" type="hidden">
 							<div class="btn-group">
 							<button id="btn_add" type="button" class="btn btn-sm btn-success" onclick="addinfo()">
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true">新增用户</span>
 							</button>
 						</div>
-						<table class="table table-striped table-hover table-responsive table-bordered" id="nullusertable"><tr><td>没有相关数据</td></tr></table>
+						<table class="table table-striped table-hover table-responsive table-bordered" id="permtable"><tr><td>没有相关数据</td></tr></table>
 						<!-- 分页按钮  -->
 						<div class="container">
 							<div class="row">

@@ -1,6 +1,5 @@
 //(分页部分可能代码有问题，之后新加的JS一律放到分页前面)
 $(document).ready(function () {
-	
 	//角色选择后，显示该角色的权限
     $("input[name^='roles']").change(function () {  
     	var checkboxs = $("input[name^='roles']:checkbox:checked");
@@ -97,21 +96,23 @@ $(document).ready(function () {
 							pages = data[tmp].pages;
 							/*alert("bootstrap："+pages);*/
 							var list = data[tmp].list;
-		 					for(var obj in list){
-			 					htmlContent += "<tr><td><input type='checkbox' name='nulluseremp_checkbox' value="+list[obj].eid+"></td>";
-			 					htmlContent += "<td>"+list[obj].ename+"</td>";
-								htmlContent += "<td>"+list[obj].esex+"</td>";
-								htmlContent += "<td>"+list[obj].ebrithday+"</td>";
-								htmlContent += "<td>"+list[obj].dName+"</td>";
-								htmlContent += "<td>"+list[obj].ejob+"</td>";
-		 					}
+							if(list.length>0){
+								for(var obj in list){
+				 					htmlContent += "<tr><td><input type='checkbox' name='nulluseremp_checkbox' value="+list[obj].eid+"></td>";
+				 					htmlContent += "<td>"+list[obj].ename+"</td>";
+									htmlContent += "<td>"+list[obj].esex+"</td>";
+									htmlContent += "<td>"+list[obj].ebrithday+"</td>";
+									htmlContent += "<td>"+list[obj].dName+"</td>";
+									htmlContent += "<td>"+list[obj].ejob+"</td>";
+			 					}
+							}else{
+								var htmlContent = "<tr><td>没有相关数据</td></tr>";
+							}
 		 				}	
 						htmlContent += "</tr></tbody>"
 						$("#nullusertable").html(htmlContent);
-						
 					}
 				}
-				
 		 });
 	}
 	 
@@ -129,19 +130,23 @@ $(document).ready(function () {
 						success : function(data) {
 							/*alert("分页数："+data.length);*/
 							if(data.length>0){
-			 					var htmlContent = "<thead><tr><th>&nbsp;</th><th colspan='5' align='center' >员工信息</th></tr><tr><th><input type='checkbox' id='nulluseremp' name='nulluseremp'></th><th>姓名</th><th>性别</th><th>出生年月</th><th>部门</th> <th>职务</th></tr></thead><tbody>";
+			 					var htmlContent = "<thead><tr><th>&nbsp;</th><th colspan='5' align='center' >员工信息</th></tr><tr><th><input type='checkbox' id='nulluseremp' name='nulluseremp' onclick='nullcheckbox()'></th><th>姓名</th><th>性别</th><th>出生年月</th><th>部门</th> <th>职务</th></tr></thead><tbody>";
 				 				for(var tmp in data){
 									pages = data[tmp].pages;
 									var list = data[tmp].list;
-				 					for(var obj in list){
-				 						/*alert("分页数："+list[obj].esex);*/
-					 					htmlContent += "<tr><td><input type='checkbox' name='nulluseremp_checkbox' value="+list[obj].eid+"></td>";
-					 					htmlContent += "<td>"+list[obj].ename+"</td>";
-										htmlContent += "<td>"+list[obj].esex+"</td>";
-										htmlContent += "<td>"+list[obj].ebrithday+"</td>";
-										htmlContent += "<td>"+list[obj].dName+"</td>";
-										htmlContent += "<td>"+list[obj].ejob+"</td>";
-				 					}
+									if(list.length>0){
+										for(var obj in list){
+					 						/*alert("分页数："+list[obj].esex);*/
+						 					htmlContent += "<tr><td><input type='checkbox' name='nulluseremp_checkbox' value="+list[obj].eid+"></td>";
+						 					htmlContent += "<td>"+list[obj].ename+"</td>";
+											htmlContent += "<td>"+list[obj].esex+"</td>";
+											htmlContent += "<td>"+list[obj].ebrithday+"</td>";
+											htmlContent += "<td>"+list[obj].dName+"</td>";
+											htmlContent += "<td>"+list[obj].ejob+"</td>";
+					 					}
+									}else{
+										var htmlContent = "<tr><td>没有相关数据</td></tr>";
+									}
 				 				}	
 								htmlContent += "</tr></tbody>"
 								$("#nullusertable").html(htmlContent);
@@ -228,7 +233,7 @@ function searcheByName(){
 				success : function(data) {
 					/*alert("分页数："+data.length);*/
 					if(data.length>0){
-	 					var htmlContent = "<thead><tr><th>&nbsp;</th><th colspan='5' align='center' >员工信息</th></tr><tr><th><input type='checkbox' id='nulluseremp' name='nulluseremp'></th><th>姓名</th><th>性别</th><th>出生年月</th><th>部门</th> <th>职务</th></tr></thead><tbody>";
+	 					var htmlContent = "<thead><tr><th>&nbsp;</th><th colspan='5' align='center' >员工信息</th></tr><tr><th><input type='checkbox' id='nulluseremp' name='nulluseremp' onclick='nullcheckbox()'></th><th>姓名</th><th>性别</th><th>出生年月</th><th>部门</th> <th>职务</th></tr></thead><tbody>";
 		 				for(var tmp in data){
 							pages = data[tmp].pages;
 							var list = data[tmp].list;
