@@ -13,11 +13,7 @@ public interface RolePermMapper {
 	
 	Role getRoleInfoByrid(int rid);
 	
-	Permission getPermInfoBypid(int pid);
-	
 	int updateRole(Role role);
-	
-	int updatePerm(Permission perm);
 	
 	int deleteRolePerm(int rid);
 	

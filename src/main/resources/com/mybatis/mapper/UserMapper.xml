@@ -38,7 +38,6 @@
   
     <select id="getPermissions" resultMap="PermsBaseResultMap" parameterType="java.lang.String" >
 	SELECT
-	p.`pid`,
 	p.`name`,
 	p.`description`
 	from permissions p
@@ -47,7 +46,7 @@
 	SELECT r.`rid`
 	FROM roles r
 	JOIN userrole ur  ON r.rid = ur.rid
-    JOIN users u ON ur.eid = u.eid
+  JOIN users u ON ur.eid = u.eid
 	WHERE u.username = #{username,jdbcType=VARCHAR}
 	)
 	</select>

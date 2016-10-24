@@ -69,7 +69,7 @@ public class RolePermBusiness {
 	
 	/**  
      * 更新角色的描述
-     * @param  Role role
+     * @param  int rid
      * @param  无
      * @return int
      */ 
@@ -77,25 +77,6 @@ public class RolePermBusiness {
 		return rolepermDao.updateRole(role);
 	}
 	
-	/**  
-     * 根据pid得到角色信息
-     * @param  int pid
-     * @param  无
-     * @return Role
-     */ 
-	public Permission getPermInfoBypid(int pid){
-		return rolepermDao.getPermInfoBypid(pid);
-	}
-	
-	/**  
-     * 更新权限的描述
-     * @param  Permission perm
-     * @param  无
-     * @return int
-     */ 
-	public int updatePerm(Permission perm){
-		return rolepermDao.updatePerm(perm);
-	}
 	
 	/**  
 	 * 删除角色的权限-更新数据库

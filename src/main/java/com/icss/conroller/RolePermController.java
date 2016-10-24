@@ -141,8 +141,8 @@ public class RolePermController {
      * @param  HttpServletRequest request
      * @return String
  	 */
-     @RequestMapping("/editrole_info.do")
-     public String editrole_info(HttpSession session,HttpServletRequest request) {	
+     @RequestMapping("/edit_info.do")
+     public String edit_info(HttpSession session,HttpServletRequest request) {	
      	String rid = request.getParameter("rid");
      	Role role = rolepermBusiness.getRoleInfoByrid(Integer.parseInt(rid));
      	session.setAttribute("role", role);
@@ -152,7 +152,7 @@ public class RolePermController {
      	ridlist.add(0, rid);;
     	List<Permission> permlist = userBusiness.getallPermsByrid(ridlist); 
     	session.setAttribute("permlist", permlist);
-         return "/admin/role_updateinfo";
+         return "/admin/roleperm_updateinfo";
      }
 	   
      
@@ -162,8 +162,8 @@ public class RolePermController {
       * @param  HttpSession session
       * @return String
  	 */
-     @RequestMapping("/updateroleInfo.do")
-     public String updateroleInfo(@ModelAttribute("role") Role role,@ModelAttribute("roleperm") RolePerm roleperm) {
+     @RequestMapping("/updateInfo.do")
+     public String updateInfo(@ModelAttribute("role") Role role,@ModelAttribute("roleperm") RolePerm roleperm) {
     	 	try {
     	 		rolepermBusiness.updateRole(role);
          		rolepermBusiness.deleteRolePerm(role.getRid());
@@ -174,38 +174,6 @@ public class RolePermController {
 				return "/public/fail";
 			}
      }
-     
-     /**
-  	 * 跳转到权限信息修改页面
-  	 * @param  HttpSession session
-      * @param  HttpServletRequest request
-      * @return String
-  	 */
-      @RequestMapping("/editperm_info.do")
-      public String editperm_info(HttpSession session,HttpServletRequest request) {
-       	String pid = request.getParameter("pid");
-      	Permission perm = rolepermBusiness.getPermInfoBypid(Integer.parseInt(pid));
-      	session.setAttribute("perm", perm);
-          return "/admin/perm_updateinfo";
-      }
- 	   
-      
-      /**
-  	 * 修改权限-更新数据库
-  	 * @param  @ModelAttribute("user") User user
-       * @param  HttpSession session
-       * @return String
-  	 */
-      @RequestMapping("/updatepermInfo.do")
-      public String updatepermInfo(@ModelAttribute("perm") Permission perm) {
-     	 	try {
-     	 		rolepermBusiness.updatePerm(perm);
-              	return "/public/access";
- 			} catch (Exception e) {
- 				// TODO: handle exception
- 				return "/public/fail";
- 			}
-      }
      
 	    /**
 		 * 根据员描述搜索角色、权限
