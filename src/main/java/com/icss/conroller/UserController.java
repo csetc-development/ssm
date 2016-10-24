@@ -240,7 +240,7 @@ public class UserController {
 	    	//进行显示由用户的员工信息操作，对得到的所有用户员工视图进行遍历，从而得到每一个的username
 	    	for(ViewUserEmpallinfo useremp:page.getList()){
 	    		//进行用户的到权限内容的操作，对的到的权限逐个取出其描述内容放入StringBuffer
-	    		for(Permission perms:userBusiness.getPermissions(useremp.getUsername())){
+	    		for(Permission perms:userBusiness.getPermissions(useremp.getUsername())){			
 	    			//i用于控制权限第一个不加逗号
 	    			if(i==1){
 	    				strbuff_perms.append(perms.getDescription());
