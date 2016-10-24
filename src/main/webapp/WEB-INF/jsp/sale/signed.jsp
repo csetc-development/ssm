@@ -22,7 +22,6 @@
 <!-- Custom styles for this template -->
 <link href="<%=basePath%>css/dashboard.css" rel="stylesheet">
 <link href="<%=basePath%>css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<link href="<%=basePath%>css/fileinput.min.css" rel="stylesheet">
 
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -38,7 +37,6 @@
 <script type="text/javascript" src="<%=basePath%>js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>myjs/add_stu.js"></script>
-
 </head>
 
 <body>
@@ -46,25 +44,24 @@
 	<input value="${pages }" id="pagecount" type="hidden">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
+		<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
+					<li ><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
 					<li class="active"><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
-					<li><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
+					<li ><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
 					<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
 					<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
 					<li><a href="<%=basePath%>empinfo/empmanagement.do">员工管理</a></li>
 					<li><a href="<%=basePath%>paycode/Codes.do">业务管理</a></li>
 					<li><a href="<%=basePath%>paycode/reports.do">数据统计</a></li> --%>
-					
 				</ul>
-				
-				<%-- <ul class="nav nav-sidebar">
-					<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li>
-					<li><a href="<%=basePath%>admin/manager.do">管理员</a></li>
-				</ul> --%>
-				<div id="tree"></div>
-			</div>
+				<ul class="nav nav-sidebar">
+					<%--<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li> --%>
+					<li ><a href="<%=basePath%>user/haveuserinfo.do">用户管理</a></li>
+					<li ><a href="<%=basePath%>roleperm/roleinfo.do">角色权限管理</a></li>
+				</ul>
+			<div id="tree"></div>
+		</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
 				<div class="container" style="height:20px;"></div>
@@ -149,17 +146,15 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">导入签单信息</h4>
       </div>
-      <div class="input-group">
-      <form action="signed/readExcel.do" enctype="multipart/form-data" method="post" >   
-					<input id="mFile" type="file" class="file" name="mFile">
-       		<div class="modal-footer" >
-        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-      		    <button type="submit" class="btn btn-primary">导入</button>
-         	</div>
-    	</form> 
-      </div> 
+      <div class="modal-body">
+        <input type="file"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">导入</button>
+      </div>
+    </div>
   </div>
-</div>
 </div>
 	
 	<%@ include file="../public/footer.jsp"%>
@@ -172,8 +167,6 @@
 	<script src="<%=basePath%>js/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="<%=basePath%>myjs/customer.js"></script>
 	<script src="<%=basePath%>js/page.js"></script>
-	
-
 
 </body>
 </html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.dao.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.icss.bean.Permission" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, description, name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from permissions
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from permissions
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.icss.bean.Permission" >
+    insert into permissions (pid, description, name
+      )
+    values (#{pid,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.icss.bean.Permission" >
+    insert into permissions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.Permission" >
+    update permissions
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.icss.bean.Permission" >
+    update permissions
+    set description = #{description,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  
+    <select id="selectPermByDescription" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    <bind name="description" value="'%'+ _parameter + '%'" />
+    select 
+    <include refid="Base_Column_List" />
+    from permissions
+    where description like #{description,jdbcType=VARCHAR}
+  </select>
+</mapper>

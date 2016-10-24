@@ -342,19 +342,6 @@
       #{amount,jdbcType=REAL}, #{handler,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{sid,jdbcType=INTEGER})
   </insert>
-  
-    <!-- 通过scustomercardid来查询-->
-   <select id="selectByCardId"  resultMap="BaseResultMap" parameterType="java.lang.String">
-   		SELECT signed.scustomercardid FROM signed  WHERE scustomercardid = #{CardId,jdbcType=VARCHAR}  
-   </select>
-       <!-- 通过sid来查询-->
- 	<select id="insertSelecByid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from signed
-    where sid = #{sid,jdbcType=INTEGER}
-  </select>
-
 
   
   
