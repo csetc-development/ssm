@@ -129,11 +129,11 @@ public class SignedController {
 	 * @throws ServletException 
      */  
     @RequestMapping(value="readExcel.do")   
-    public ModelAndView readExcel(@RequestParam(value="input-1") MultipartFile mFile,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException, ServletException{  
+    public ModelAndView readExcel(@RequestParam(value="mFile") MultipartFile mFile,HttpServletRequest request,HttpSession session,HttpServletResponse response) throws IOException, ServletException{  
    
    	
     	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-    	mFile = multipartRequest.getFile("input-1");
+    	mFile = multipartRequest.getFile("mFile");
     	String path = request.getSession().getServletContext().getRealPath("/WEB-INF/upload/");//获取文件名 的路径
     	System.out.println(path);
     	String name = mFile.getOriginalFilename();   //获取文件名     
@@ -173,10 +173,12 @@ public class SignedController {
 	 * @return 返款签单的信息
 	 */ 
     @RequestMapping(value="BackFreeId.do")   
-	public @ResponseBody String BackFree(HttpServletRequest request,HttpSession session){
-		JSONArray jsonArray = JSONArray.fromObject(signedBusiness.selectSignedById(request));
-		System.out.println(jsonArray.toString());
-		return jsonArray.toString();
+	public String BackFree(HttpServletRequest request,HttpSession session){
+    	Integer sid= Integer.parseInt(request.getParameter("sid"));
+    	List<Signed> list=	signedBusiness.SelecByid(sid);
+    	session.setAttribute("listbackfree", list);
+		
+		return "financial/financial";
 	
 
 	}

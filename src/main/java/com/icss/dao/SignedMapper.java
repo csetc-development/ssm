@@ -32,6 +32,6 @@ public interface SignedMapper {
     
     List<String> selectByname(String Customername);
     
-    
+    Signed SelecByid(Integer sid);
     
 }

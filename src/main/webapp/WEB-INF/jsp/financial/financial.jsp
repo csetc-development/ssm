@@ -105,7 +105,7 @@
 										<button id="btn_edit" type="button" class="btn btn-xs btn-success" onclick="showModel()">
 											<span class="glyphicon glyphicon-arrow-down" aria-hidden="true">收款</span>
 										</button>
-										<button id="btn_delete" type="button" class="btn btn-xs btn-warning"  onclick="OwnModel()"data-toggle="modal" data-target="#BackOrExit">
+										<button id="btn_delete" type="button" class="btn btn-xs btn-warning"  onclick="OwnModel()" data-target="#BackOrExit">
 											<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"  >返/退款</span>
 										</button>
 									</div>

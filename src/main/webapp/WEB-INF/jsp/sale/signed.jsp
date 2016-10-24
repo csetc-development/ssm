@@ -151,7 +151,7 @@
       </div>
       <div class="input-group">
       <form action="signed/readExcel.do" enctype="multipart/form-data" method="post" >   
-					<input id="input-1" type="file" class="file">
+					<input id="mFile" type="file" class="file" name="mFile">
        		<div class="modal-footer" >
         		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
       		    <button type="submit" class="btn btn-primary">导入</button>

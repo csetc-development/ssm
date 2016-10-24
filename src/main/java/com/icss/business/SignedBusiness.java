@@ -88,8 +88,19 @@ public class SignedBusiness {
 		List<String> list=	signedDao.selectByCardId(CardId);//通过上传的CardID去数据查询所有的身份证信息，并得到一个list.
 		List<String> listSigned=signedDao.selectByname(Customername);
 	
-			signedDao.insertSelective(signed);	
+		signedDao.insertSelective(signed);	
 		
+	}
+	/**
+	 * @param request
+	 * @return 根据sid查询整个签单信息
+	 */
+	public List<Signed> SelecByid(Integer sid){
+		
+		
+		
+		return null;
+
 	}
 
 }
