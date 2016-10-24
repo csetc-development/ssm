@@ -134,19 +134,11 @@
 		<bean id="userBusiness" class="com.icss.business.UserBusiness">
 			<property name="userDao" ref="userMapperImpl"></property>
 		</bean>
-		
 		<bean id="signedMapperImpl" class="com.icss.impl.SignedMapperImpl">
 			<property name="session" ref="sqlSession"></property>
 		</bean>
 		<bean id="signedBusiness" class="com.icss.business.SignedBusiness">
 			<property name="signedDao" ref="signedMapperImpl"></property>
-		</bean>
-		
-		<bean id="rolepermMapperImpl" class="com.icss.impl.RolePermMapperImpl">
-			<property name="session" ref="sqlSession"></property>
-		</bean>
-		<bean id="rolepermBusiness" class="com.icss.business.RolePermBusiness">
-			<property name="rolepermDao" ref="rolepermMapperImpl"></property>
 		</bean>
 		
 		

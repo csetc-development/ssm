@@ -20,13 +20,14 @@ public class SignedMapperImpl extends BasicSqlSupport implements SignedMapper{
 	@Override
 	public int insert(Signed record) {
 		// TODO Auto-generated method stub
-		return 0;
+		 return this.session.insert("com.icss.dao.SignedMapper.insert", record);
 	}
 
 	@Override
 	public int insertSelective(Signed record) {
 		// TODO Auto-generated method stub
-		return 0;
+		System.out.println(record.getDept());
+		 return this.session.insert("com.icss.dao.SignedMapper.insertSelective", record);
 	}
 
 	@Override
@@ -74,5 +75,28 @@ public class SignedMapperImpl extends BasicSqlSupport implements SignedMapper{
 		// TODO Auto-generated method stub
 		return this.session.insert("com.icss.dao.SignedMapper.addrecord", iaer);
 	}
+
+	@Override
+	public List<String> selectByCardId(String CardId) {
+		// TODO Auto-generated method stub
+		return this.session.selectList("com.icss.dao.SignedMapper.selectByCardId", CardId);
+	}
+
+	@Override
+	public List<String> selectByname(String Customername) {
+		// TODO Auto-generated method stub
+		return this.session.selectList("com.icss.dao.SignedMapper.selectByCardId", Customername);
+	}
+
+	@Override
+	public Signed SelecByid(Integer sid) {
+		// TODO Auto-generated method stub
+		return this.session.selectOne("com.icss.dao.SignedMapper.insertSelecByid", sid);
+	}
+
+	
+
+	
+	
 
 }

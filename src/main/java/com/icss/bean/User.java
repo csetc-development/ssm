@@ -1,11 +1,9 @@
-/**
- * @date 2016/10/17
- * @author 王梓
- */
 package com.icss.bean;
 
 public class User {
     private String username;
+
+    private Integer rid;
 
     private String password;
     			   
@@ -17,6 +15,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public Integer getRid() {
+        return rid;
+    }
+
+    public void setRid(Integer rid) {
+        this.rid = rid;
     }
 
     public String getPassword() {
