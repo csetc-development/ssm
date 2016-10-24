@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					          	<input type="checkbox" name="roles" id="roles${roles.rid }" value="${roles.rid }"><label for="roles${roles.rid }">${roles.description }</label> &nbsp;&nbsp; &nbsp;&nbsp;
 					          </c:forEach>	      
 					      </div>
-					       <input type="hidden" id="ridlist" name="ridlist" required="required" value="0">
+					       <input type="text" id="ridlist" name="ridlist" required="required" value="0">
 					      <label  class="col-md-2 control-label"></label>
 					      <div class="col-md-2">
 					      </div>
