@@ -3,37 +3,75 @@
 <mapper namespace="com.icss.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.icss.bean.User" >
     <id column="username" property="username" jdbcType="VARCHAR" />
-    <result column="rid" property="rid" jdbcType="INTEGER" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
  <!-- Role配置 --> 
     <resultMap id="RoleBaseResultMap" type="com.icss.bean.Role" >
     <id column="rid" property="rid" jdbcType="INTEGER" />
     <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="INTEGER" />
   </resultMap>
   <!-- Permission配置 -->
     <resultMap id="PermsBaseResultMap" type="com.icss.bean.Permission" >
     <id column="pid" property="pid" jdbcType="INTEGER" />
     <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+    <!-- Roleperms配置 -->
+    <resultMap id="RolepermsBaseResultMap" type="com.icss.bean.Role" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
   </resultMap>
   
-   <select id="getRoles" resultMap="RoleBaseResultMap" parameterType="java.lang.String" >
+  <select id="getRoles" resultMap="RoleBaseResultMap" parameterType="java.lang.String" >
 	SELECT
-	users.username AS username,
-	roles.description
-	from ((`roles` join `users` on((`users`.`rid` = `roles`.`rid`))) join `permissions` on((`roles`.`pid` = `permissions`.`pid`)))
-  </select>
+	roles.`name`,
+	roles.`description`
+	FROM
+	roles
+	INNER JOIN userrole ON userrole.rid = roles.rid
+    INNER JOIN users ON userrole.eid=users.eid
+    where `users`.`username` = #{username,jdbcType=VARCHAR}
+	</select>
   
-     <select id="getPermissions" resultMap="RoleBaseResultMap" parameterType="java.lang.String" >
+    <select id="getPermissions" resultMap="PermsBaseResultMap" parameterType="java.lang.String" >
 	SELECT
-	users.username AS username,
-	permissions.description
-	from ((`roles` join `users` on((`users`.`rid` = `roles`.`rid`))) join `permissions` on((`roles`.`pid` = `permissions`.`pid`)))
-  </select>
+	p.`pid`,
+	p.`name`,
+	p.`description`
+	from permissions p
+	JOIN rolepermission rp ON p.pid = rp.pid
+	WHERE rid IN (
+	SELECT r.`rid`
+	FROM roles r
+	JOIN userrole ur  ON r.rid = ur.rid
+    JOIN users u ON ur.eid = u.eid
+	WHERE u.username = #{username,jdbcType=VARCHAR}
+	)
+	</select>
   
+     <select id="getAllRole" resultMap="RoleBaseResultMap" parameterType="java.lang.String" >
+	SELECT
+	*
+	from roles
+	</select>
+  
+    <select id="getAllPerms" resultMap="PermsBaseResultMap" parameterType="java.lang.String" >
+	SELECT
+	*
+	from permissions
+	</select>
+	
+   <select id="getPermsByrid" resultMap="PermsBaseResultMap" parameterType="int" >
+	SELECT
+	p.pid,p.name,p.description
+	from permissions p
+	join rolepermission rp on p.pid=rp.pid
+	join roles r on rp.rid=r.rid
+	where r.rid= #{rid,jdbcType=INTEGER}
+	</select>
   
     <select id="getPwd" parameterType="java.lang.Integer" resultType="java.lang.String">
 	SELECT `password`
@@ -52,9 +90,9 @@
   </select>
   
   <sql id="Base_Column_List" >
-    username, rid, password, eid
+    username, eid, password, eid
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from users
@@ -64,10 +102,16 @@
     delete from users
     where username = #{username,jdbcType=VARCHAR}
   </delete>
+  
+    <delete id="deleteUserByEid" parameterType="int" >
+    delete from users 
+    where eid  = #{eid,jdbcType=INTEGER}
+  </delete> 
+  
   <insert id="insert" parameterType="com.icss.bean.User" >
-    insert into users (username, rid, password, 
+    insert into users (username, password, 
       eid)
-    values (#{username,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{eid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.icss.bean.User" >
@@ -75,9 +119,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="username != null" >
         username,
-      </if>
-      <if test="rid != null" >
-        rid,
       </if>
       <if test="password != null" >
         password,
@@ -90,9 +131,6 @@
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="rid != null" >
-        #{rid,jdbcType=INTEGER},
-      </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
@@ -101,12 +139,9 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.User" >
+<update id="updateByPrimaryKeySelective" parameterType="com.icss.bean.User" >
     update users
     <set >
-      <if test="rid != null" >
-        rid = #{rid,jdbcType=INTEGER},
-      </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
@@ -118,9 +153,15 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.icss.bean.User" >
     update users
-    set rid = #{rid,jdbcType=INTEGER},
-      password = #{password,jdbcType=VARCHAR},
+    set  password = #{password,jdbcType=VARCHAR},
       eid = #{eid,jdbcType=INTEGER}
     where username = #{username,jdbcType=VARCHAR}
   </update>
+  
+  <!-- <select id="getuidByeid" resultType="Integer" parameterType="int" >
+    select 
+  	u.uid
+    from users u
+    where eid =  #{eid,jdbcType=INTEGER}
+  </select> -->
 </mapper>
