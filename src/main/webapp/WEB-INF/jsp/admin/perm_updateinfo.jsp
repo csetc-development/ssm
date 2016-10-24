@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
 	
-	<title>ETC-添加客户信息</title>
+	<title>ETC-修改角色信息</title>
 	<link href="<%=basePath%>css/public.css" rel="stylesheet" type="text/css">
 	<!-- Bootstrap core CSS -->
 	<link href="<%=basePath%>css/bootstrap.min.css" rel="stylesheet">
@@ -30,54 +30,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>myjs/users.js"></script>
+    <script type="text/javascript" src="<%=basePath%>myjs/roleperm.js"></script>
+    
   </head>
   
   <body>
   	<jsp:include page="../public/navheader.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="row">
-		<jsp:include page="../public/navleft.jsp"></jsp:include>
+	<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li ><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
+				<li ><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
+				<li ><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
+				<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
+				<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
+				<li><a href="<%=basePath%>empinfo/empmanagement.do">员工管理</a></li>
+				<li><a href="<%=basePath%>paycode/Codes.do">业务管理</a></li>
+				<li><a href="<%=basePath%>paycode/reports.do">数据统计</a></li> --%>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<%--<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li> --%>
+				<li ><a href="<%=basePath%>user/haveuserinfo.do">用户管理</a></li>
+				<li class="active"><a href="<%=basePath%>roleperm/roleinfo.do">角色权限管理</a></li>
+			</ul>
+			<div id="tree"></div>
+		</div>
+
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h2>添加用户信息</h2>
+				<h2>修改角色信息</h2>
 				<div class="panel panel-info panel-body">
-					<p>（只能选择角色）</p>
-					<p>默认账号：员工姓名+出生年份</p>
-					<p>默认密码：123456</p>
-					 <form id="userform" class="form-horizontal" action="<%=basePath%>user/insermoretInfo.do" method="post">
-					<input type="hidden" name="eid" value="${eidlist }">
-					<input type="hidden" name="ebrithday" value="${birthlist }">
+					<p>（只能修改描）</p>
+					 <form class="form-horizontal" action="<%=basePath%>roleperm/updatepermInfo.do" method="post">
 						<div class="form-group">
-					      <label for="crname" class="col-md-2 control-label">姓名</label>
+					      <label for="crname" class="col-md-2 control-label">id</label>
 					      <div class="col-md-2">
-					        <textarea rows="5" cols="10" name="ename" readonly="readonly" style="resize:none;">${namelist }</textarea>
+					        <input id="pid" name="pid" type="text"  readonly="readonly"  value="${perm.pid }">
 					      </div>
-					      <label  class="col-md-2 control-label"></label>
+					      <label  class="col-md-2 control-label">字段</label>
 					      <div class="col-md-2">
-						  </div>
+						      	<input id="name" name="name" type="text" value="${perm.name }" readonly="readonly"  >
+					      </div>
 					    </div>
-					      <div class="form-group">
-					      <label for="ejob" class="col-md-2 control-label">角色</label>
-					      <div class="col-md-7" >
-					          <c:forEach items="${userroles }" var="roles">
-					          	<input type="checkbox" name="roles" id="roles${roles.rid }" value="${roles.rid }"><label for="roles${roles.rid }">${roles.description }</label> &nbsp;&nbsp; &nbsp;&nbsp;
-					          </c:forEach>	      
+						<div class="form-group">
+					      <label for="ebrithday" class="col-md-2 control-label">描述</label>
+					      <div class="col-md-2">
+					      	<input type="text" id="description" name="description"  value="${perm.description }">
 					      </div>
-					       <input type="hidden" id="ridlist" name="ridlist" required="required" value="0">
-					      <label  class="col-md-2 control-label"></label>
 					      <div class="col-md-2">
 					      </div>
 					    </div>
-						   
-					   <div class="form-group">
-					      <label class="col-md-2 control-label">角色所拥有权限</label>
-					     <div class="col-md-2">
-					      	 <textarea rows="3" cols="5" id="permissions_des" readonly="readonly" style="height:150px;width:400px;resize:none;">没有相关权限</textarea>
-					      </div>
-					   </div>
-					    <div class="col-md-2 col-md-offset-3">
-					        <button type="submit" class="btn btn-success btn-block" >添加</button>
-					    </div>
+					       <div class="col-md-2 col-md-offset-3">
+					           <input type="hidden" id="pidlist" name="pidlist" required="required" value="0">
+					        <button type="submit" class="btn btn-success btn-block" >保存</button>
+					   	   </div>
 					  </form>
 					</div>
 				</div>

@@ -41,9 +41,21 @@ public class RolePermMapperImpl extends BasicSqlSupport implements RolePermMappe
 	}
 	
 	@Override
+	public Permission getPermInfoBypid(int pid) {
+		// TODO Auto-generated method stub
+		return this.session.selectOne("com.icss.dao.PermissionMapper.selectByPrimaryKey",pid);
+	}
+	
+	@Override
 	public int updateRole(Role role) {
 		// TODO Auto-generated method stub
 		return this.session.update("com.icss.dao.RoleMapper.updateByPrimaryKeySelective",role);
+	}
+	
+	@Override
+	public int updatePerm(Permission perm) {
+		// TODO Auto-generated method stub
+		return this.session.update("com.icss.dao.PermissionMapper.updateByPrimaryKeySelective",perm);
 	}
 	
 	

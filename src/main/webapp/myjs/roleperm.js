@@ -252,11 +252,24 @@ function updateroleinfo(){
 	}else{
 		cuscheckbox.each(function(){ //由于复选框一般选中的是多个,所以可以循环输出 
 			var rid = $(this).val();
-			window.location.href="roleperm/edit_info.do?rid="+rid;
+			window.location.href="roleperm/editrole_info.do?rid="+rid;
 		}); 
 	}
-	
 }
+
+//修改权限信息
+function updateperminfo(){
+	var cuscheckbox = $("input[name^='perm']:checkbox:checked");
+	if(cuscheckbox.length>1){
+		alert("只能修改一个客户信息，请修改选中信息！")
+	}else{
+		cuscheckbox.each(function(){ //由于复选框一般选中的是多个,所以可以循环输出 
+			var pid = $(this).val();
+			window.location.href="roleperm/editperm_info.do?pid="+pid;
+		}); 
+	}
+}
+
 
 //添加用户信息
 function addinfo(){

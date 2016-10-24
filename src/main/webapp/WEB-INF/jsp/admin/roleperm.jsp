@@ -130,8 +130,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="tab-pane fade" id="perm">
 							<input value="${permpages }" id="permpagecount" type="hidden">
 							<div class="btn-group">
-							<button id="btn_add" type="button" class="btn btn-sm btn-success" onclick="addinfo()">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true">新增用户</span>
+							<button id="btn_add" type="button" class="btn btn-sm btn-success" onclick="updateperminfo()">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true">修改权限信息</span>
 							</button>
 						</div>
 						<table class="table table-striped table-hover table-responsive table-bordered" id="permtable"><tr><td>没有相关数据</td></tr></table>
