@@ -83,14 +83,9 @@ public class SignedBusiness {
 	     * 只要一个字段名的数据不同就插入，反之，则要在Excel表进行备注。
 	     * 没有做。
 	     */  
-		String CardId=	signed.getScustomercardid();//获取上传的CardId.
-		String Customername=signed.getScustomername();
-		List<String> list=	signedDao.selectByCardId(CardId);//通过上传的CardID去数据查询所有的身份证信息，并得到一个list.
-		List<String> listSigned=signedDao.selectByname(Customername);
-	
 		signedDao.insertSelective(signed);	
 		
 	}
-	
+	/*测试*/
 
 }

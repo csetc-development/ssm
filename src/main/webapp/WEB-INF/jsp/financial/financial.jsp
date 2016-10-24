@@ -230,10 +230,10 @@
 				<h4  class="modal-title" id="myModalLabel" >返款申请单</h4>
 			</div>
 				<div class="modal-body">
-					<form class="form-horizontal" role="form" action="signed/BackFreeId.do" method="post">
+					<form class="form-horizontal" role="form" action="" method="post">
 					<input type="hidden" name="sid" value="">
       		  		<input type="hidden" name="stateid" value="">
-						<div class="form-group">
+						<div class="panel-heading">
 							<label for="time" class="col-sm-2 control-label">日期</label>
 							<div class="col-sm-4">
 								<input type="text" id="orderDate" class="form-control" name="time">									
@@ -243,6 +243,7 @@
 								<input type="text" class="form-control" id="handler" name="handler">
 							</div>
 						</div>
+						<div class="container">
 						<div class="form-group">
 							<label for="scustomername" class="col-sm-2 control-label">学生姓名</label>
 							<div class="col-sm-4">
@@ -298,7 +299,7 @@
 							   			<option value="贷款">
 							 		    <option value="现金">
 							   			<option value="信用卡">
-								</datalist>
+									</datalist>
 							</div>
 						</div>	
  					<div class="form-group">
@@ -306,6 +307,7 @@
    						 <div style="margin-left: 110px; margin-right:20px;">
    						 <textarea class="form-control" rows="4" style="resize: none;"></textarea>
    						 </div>
+  					</div>
   					</div>
 					<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

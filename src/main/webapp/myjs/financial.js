@@ -148,12 +148,12 @@ function OwnModel(){
     				$("input[name='scustomercardid']").text(data[obj].scustomercardid);
     				$("input[name='scustomerbankcardid']").text(data[obj].scustomerbankcardid);
     				$("input[name='backfee']").text(data[obj].backfee);
-    				$("input[name='backfee']").text(data[obj].backfee);
-    				$("input[name='backfee']").text(data[obj].backfee);
+    				//$("input[name='backfee']").text(data[obj].backfee);
+    				//$("input[name='backfee']").text(data[obj].backfee);
     			}
     		}
 		})
-		$("#incomeinfo").show();
+		$("#BackOrExit").show();
 		
 	}
 };
