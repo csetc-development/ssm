@@ -10,7 +10,11 @@ $(document).ready(function () {
 	        	ridlist.push(checkboxs[i].value);
 	    }
 		//把ridlist放入input中，提交到后台
-		document.getElementById("ridlist").value=ridlist.toString();
+		if(ridlist.length>0){
+			document.getElementById("ridlist").value=ridlist.toString();
+		}else{
+			document.getElementById("ridlist").value='0';
+		}
 		/*
 		 * 测试复选框是否成功放入list中
 		 * */

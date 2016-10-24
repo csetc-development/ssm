@@ -63,7 +63,7 @@ public class UserBusiness {
      * @return List<Permission>
      */ 
 	public List<Permission> getPermissions(String username){		
-		return userDao.getPermissions(username);
+		return removeDuplicate(userDao.getPermissions(username));
 	}
 	
 	/**  
