@@ -5,7 +5,7 @@ public class Permission {
 
     private String description;
 
-    private String name;
+    private String url;
 
     public Integer getPid() {
         return pid;
@@ -23,11 +23,11 @@ public class Permission {
         this.description = description == null ? null : description.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getUrl() {
+        return url;
     }
 
-    public void setname(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 }

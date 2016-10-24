@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.*"%> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -34,38 +36,54 @@
   <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+<script src="<%=basePath%><%=basePath%>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>myjs/financial.js"></script>
 </head>
+<script type="text/javascript">
+	function OwnModel(){
+	
+		var obj=document.getElementsByName('sign_checkbox'); //选择所有name="'sign_checkbox'"的对象，返回数组
+		//取到对象数组后
+		var sid='';
+		for(var i=0; i<obj.length; i++){	
+		if(obj[i].checked)
+			sid+=obj[i].value; //如果选中，将value添加到变量str中			
+		}
+		
+		 window.location = 'signed/BackFreeId.do?sid='+sid ;
+		};
+
+</script>
 
 <body>
 	<jsp:include page="../public/navheader.jsp"></jsp:include>
 	<input value="${pages }" id="pagecount" type="hidden">
 	<div class="container-fluid">
 		<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
+			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li ><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
-					<li ><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
-					<li  class="active"><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
+					<li><a href="<%=basePath%>emp/adminindex.do">首页<span class="sr-only">(current)</span></a></li>
+					<li><a href="<%=basePath%>signed/signedinfo.do">签单客户</a></li>
+					<li class="active"><a href="<%=basePath%>signed/firstincomepay.do">收入支出</a></li>
+					
 					<%-- <li class="active"><a href="<%=basePath%>customer/manager.do">客户管理</a></li>
 					<li><a href="<%=basePath%>student/management.do">学员管理</a></li>
 					<li><a href="<%=basePath%>empinfo/empmanagement.do">员工管理</a></li>
 					<li><a href="<%=basePath%>paycode/Codes.do">业务管理</a></li>
 					<li><a href="<%=basePath%>paycode/reports.do">数据统计</a></li> --%>
+					
 				</ul>
-				<ul class="nav nav-sidebar">
-					<%--<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li> --%>
-					<li ><a href="<%=basePath%>user/haveuserinfo.do">用户管理</a></li>
-					<li ><a href="<%=basePath%>roleperm/roleinfo.do">角色权限管理</a></li>
-				</ul>
-			<div id="tree"></div>
-		</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-				<div class="container" style="height:20px;"></div>
-		
+				<%-- <ul class="nav nav-sidebar">
+					<li><a href="<%=basePath%>empinfo/showMe.do"><i class="manager"></i>个人中心</a></li>
+					<li><a href="<%=basePath%>admin/manager.do">管理员</a></li>
+				</ul> --%>
+				<div id="tree"></div>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">				
+				<div class="container" style="height:20px;"></div>		
 				<div class="container">
 					<div class="row">
 					</div>
@@ -79,8 +97,7 @@
 										<option value="2">已收款</option>
 										<option value="3">待返款</option>
 										<option value="4">待退款</option>
-									</select>
-									
+									</select>									
 								</td>
 							</tr>
 							<tr>
@@ -89,8 +106,8 @@
 										<button id="btn_edit" type="button" class="btn btn-xs btn-success" onclick="showModel()">
 											<span class="glyphicon glyphicon-arrow-down" aria-hidden="true">收款</span>
 										</button>
-										<button id="btn_delete" type="button" class="btn btn-xs btn-warning" >
-											<span class="glyphicon glyphicon-arrow-up" aria-hidden="true">返/退款</span>
+										<button id="btn_delete" type="button" class="btn btn-xs btn-warning"  onclick="OwnModel()" data-target="#BackOrExit">
+											<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"  >返/退款</span>
 										</button>
 									</div>
 								</td>
@@ -145,7 +162,7 @@
 	</div>
 
 <div class="modal" id="incomeinfo" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-md">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -157,16 +174,9 @@
 	      <div class="modal-body">
 		      <div class="panel panel-default">
 				  <div class="panel-heading">
-					  	 <div class="container">
-				      		<div class="row">
-				      			<div class="col-sm-3">
-				      				<span>日期：</span><input name="time" type="text" style="border-style:none; background:rgba(0,0,0,0)" readonly="readonly"></div>
-				      			<div class="col-sm-4">
-				      				<span>经手人：</span><input name="handler" type="text" style="border-style:none; background:rgba(0,0,0,0)" readonly="readonly">
-				      			</div>
-			      		 	</div>
-		      		 	</div>
-	      		 	</div>
+				  	<span>日期：</span><input name="time" type="text" style="border-style:none">&nbsp;
+	      			<span>经手人：</span><input name="handler" type="text" style="border-style:none">
+	      		  </div>
 				  <div class="panel-body">
 				    <div class="container">
 			      		<div class="row">
@@ -209,7 +219,105 @@
     </div>
   </div>
 </div>
-
+<!-- 返款 -->
+<div class="modal fade" id="BackOrExit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4  class="modal-title" id="myModalLabel" >返款申请单</h4>
+			</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form" action="signed/BackFreeId.do" method="post">
+					<input type="hidden" name="sid" value="">
+      		  		<input type="hidden" name="stateid" value="">
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">日期</label>
+							<div class="col-sm-4">
+								<input type="text" id="orderDate" class="form-control" name="time">									
+							</div>
+							<label for="firstname" class="col-sm-2 control-label">经手人</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname" name="handler">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">学生姓名</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname"
+									value="${signed.scustomername}">
+							</div>
+							<label for="firstname" class="col-sm-2 control-label">订单编号</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname"
+									value="${signed.sid}">
+							</div>
+						</div>
+						
+						<div class="form-group">						
+							<label for="firstname" class="col-sm-2 control-label">身份证</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname"
+									value="${signed.scustomercardid}">
+							</div>
+							<label for="firstname" class="col-sm-2 control-label">银行卡</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname"
+									value="${signed.scustomerbankcardid}">
+							</div>
+							
+						</div>						
+						<!-- <div class="form-group">
+							<label for="firstname" class="col-sm-2 control-label">班级</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname"
+									value="${signed.scustomername}">
+							</div>
+							<label for="firstname" class="col-sm-2 control-label">班主任</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="firstname"
+									value="${signed.scustomername}">
+							</div>
+						</div>
+						 -->
+						
+						<div class="form-group">
+							<label for="lastname" class="col-sm-2 control-label">未返金额</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="lastname"
+									value="${signed.backfee}">
+							</div>
+							<label for="lastname" class="col-sm-2 control-label">应返金额</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="lastname"
+									placeholder="请输入金额">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="lastname" class="col-sm-2 control-label">返款方式</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="lastname"
+									placeholder="请输入姓名">
+							</div>
+						</div>	
+ 					<div class="form-group">
+   						 <label for="name" class="col-sm-2 control-label">其他</label>
+   						 <div style="margin-left: 110px; margin-right:20px;">
+   						 <textarea class="form-control" rows="4" style="resize: none;"></textarea>
+   						 </div>
+  					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary">提交</button>			
+						</div>
+						
+					</form>
+				</div>	
+		</div>
+	</div>
+</div>
 
 
 	
@@ -224,7 +332,7 @@
 	<%-- <script type="text/javascript" src="<%=basePath%>myjs/customer.js"></script> --%>
 	<script src="<%=basePath%>js/page.js"></script>
 	<script src="<%=basePath%>js/move-model.js"></script>
-
+	
 </body>
 </html>
 						
