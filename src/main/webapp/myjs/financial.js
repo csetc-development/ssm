@@ -142,17 +142,14 @@ function OwnModel(){
     		async:false, //这是重要的一步，防止重复提交的
     		data : { "sid" : signcheckbox.val()},
     		success : function(data){
-    			$("#BackOrExit span:eq(2)").text(signcheckbox.val());
-    			$("input[name='sid']").val(signcheckbox.val());
     			for(var obj in data){
-    				$("#BackOrExit span:eq(3)").text(data[obj].scustomername);
-    				$("#BackOrExit span:eq(4)").text(data[obj].sale);
-    				var str = data[obj].studyfee+data[obj].spacefee+data[obj].backfee;
-    				var s= " = "+data[obj].studyfee+"+"+data[obj].spacefee+"+"+data[obj].backfee;
-    				$("#BackOrExitomeinfo span:eq(5)").text(s);
-    				$("#BackOrExit label:eq(0)").text(str);
-    				$("#BackOrExit span:eq(6)").text(data[obj].condition);
-    				$("#BackOrExit span:eq(7)").text(data[obj].backfee);
+    				$("input[name='scustomername']").val(data[obj].scustomername);
+    				$("input[name='sid']").text(data[obj].sid);
+    				$("input[name='scustomercardid']").text(data[obj].scustomercardid);
+    				$("input[name='scustomerbankcardid']").text(data[obj].scustomerbankcardid);
+    				$("input[name='backfee']").text(data[obj].backfee);
+    				$("input[name='backfee']").text(data[obj].backfee);
+    				$("input[name='backfee']").text(data[obj].backfee);
     			}
     		}
 		})

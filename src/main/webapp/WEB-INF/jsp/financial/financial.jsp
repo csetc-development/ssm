@@ -234,38 +234,34 @@
 					<input type="hidden" name="sid" value="">
       		  		<input type="hidden" name="stateid" value="">
 						<div class="form-group">
-							<label for="firstname" class="col-sm-2 control-label">日期</label>
+							<label for="time" class="col-sm-2 control-label">日期</label>
 							<div class="col-sm-4">
 								<input type="text" id="orderDate" class="form-control" name="time">									
 							</div>
-							<label for="firstname" class="col-sm-2 control-label">经手人</label>
+							<label for="handler" class="col-sm-2 control-label">经手人</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="firstname" name="handler">
+								<input type="text" class="form-control" id="handler" name="handler">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="firstname" class="col-sm-2 control-label">学生姓名</label>
+							<label for="scustomername" class="col-sm-2 control-label">学生姓名</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="firstname"
-									value="${signed.scustomername}">
+								<input type="text" class="form-control" id="scustomername" name="scustomername">
 							</div>
-							<label for="firstname" class="col-sm-2 control-label">订单编号</label>
+							<label for="sid" class="col-sm-2 control-label">订单编号</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="firstname"
-									value="${signed.sid}">
+								<input type="text" class="form-control" id="sid" name="sid">
 							</div>
 						</div>
 						
 						<div class="form-group">						
-							<label for="firstname" class="col-sm-2 control-label">身份证</label>
+							<label for="scustomercardid" class="col-sm-2 control-label">身份证</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="firstname"
-									value="${signed.scustomercardid}">
+								<input type="text" class="form-control" id="scustomercardid" name="scustomercardid">
 							</div>
-							<label for="firstname" class="col-sm-2 control-label">银行卡</label>
+							<label for="scustomerbankcardid" class="col-sm-2 control-label">银行卡</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="firstname"
-									value="${signed.scustomerbankcardid}">
+								<input type="text" class="form-control" id="scustomerbankcardid" name="scustomerbankcardid">
 							</div>
 							
 						</div>						
@@ -284,22 +280,25 @@
 						 -->
 						
 						<div class="form-group">
-							<label for="lastname" class="col-sm-2 control-label">未返金额</label>
+							<label for="backfee" class="col-sm-2 control-label">未返金额</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="lastname"
-									value="${signed.backfee}">
+								<input type="text" class="form-control" id="backfee" name="backfee">
 							</div>
-							<label for="lastname" class="col-sm-2 control-label">应返金额</label>
+							<label for="tobackfee" class="col-sm-2 control-label">应返金额</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="lastname"
-									placeholder="请输入金额">
+								<input type="text" class="form-control" id="tobackfee" name="tobackfee" placeholder="请输入金额">				
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="lastname" class="col-sm-2 control-label">返款方式</label>
+							<label for="Paytype" class="col-sm-2 control-label">返款方式</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="lastname"
-									placeholder="请输入姓名">
+								<input type="text" class="form-control" id="backfeetype" name="amount" list="Paytype" onkeyup="this.value=this.value.replace(/\D/gi,'')"
+									placeholder="请选择返款方式">
+									<datalist id="Paytype">
+							   			<option value="贷款">
+							 		    <option value="现金">
+							   			<option value="信用卡">
+								</datalist>
 							</div>
 						</div>	
  					<div class="form-group">

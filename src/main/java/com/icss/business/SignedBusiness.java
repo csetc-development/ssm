@@ -91,16 +91,6 @@ public class SignedBusiness {
 		signedDao.insertSelective(signed);	
 		
 	}
-	/**
-	 * @param request
-	 * @return 根据sid查询整个签单信息
-	 */
-	public List<Signed> SelecByid(Integer sid){
-		
-		
-		
-		return null;
-
-	}
+	
 
 }

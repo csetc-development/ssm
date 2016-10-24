@@ -174,12 +174,9 @@ public class SignedController {
 	 */ 
     @RequestMapping(value="BackFreeId.do")   
 	public  @ResponseBody String BackFree(HttpServletRequest request,HttpSession session){
-    	Integer sid= Integer.parseInt(request.getParameter("sid"));
-    	List<Signed> list=	signedBusiness.SelecByid(sid);
-    	session.setAttribute("listbackfree", list);
-		
-		return "financial/financial";
-	
+    	JSONArray jsonArray = JSONArray.fromObject(signedBusiness.selectSignedById(request));
+		System.out.println(jsonArray.toString());
+		return jsonArray.toString();
 
 	}
 	
