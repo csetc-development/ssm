@@ -1,8 +1,6 @@
 package com.icss.dao;
 
 
-import java.util.List;
-
 import com.icss.bean.Iaer;
 import com.icss.bean.Signed;
 import com.icss.util.PageBean;
@@ -27,11 +25,4 @@ public interface SignedMapper {
     Signed onesignedinfo(int sid);
     
     int addrecord(Iaer iaer);
-    
-    List<String> selectByCardId(String CardId);
-    
-    List<String> selectByname(String Customername);
-    
-    Signed SelecByid(Integer sid);
-    
 }

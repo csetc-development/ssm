@@ -191,7 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var offset = this.dateSelector.position();
 				offset.right = offset.left + this.dateSelector.outerWidth();
 				offset.bottom = offset.top + this.dateSelector.outerHeight();
-				return event.pageY < offset.bottom && event.pageY > <offset.top && event.pageX> < offset.right && event.pageX > <offset.left>
+				return event.pageY < offset.bottom && event.pageY > offset.top && event.pageX < offset.right && event.pageX > offset.left
 			},
 			keydownHandler: function(event) {
 				switch (event.keyCode) {
